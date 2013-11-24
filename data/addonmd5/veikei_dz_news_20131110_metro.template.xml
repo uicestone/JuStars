@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[veikei_dz_news_20131110_metro.template]]></item>
+	<item id="RevisionID"><![CDATA[26436]]></item>
+	<item id="SN"><![CDATA[2013112417KXCxTxWhk5]]></item>
+	<item id="RevisionDateline"><![CDATA[1383890402]]></item>
+	<item id="Data">
+		<item id="/common/css_space.css"><![CDATA[e528f531a1a4efbce346968310283dc6]]></item>
+		<item id="/common/extend_common.css"><![CDATA[226ec1297e455d57e699c60719261c1f]]></item>
+		<item id="/common/extend_module.css"><![CDATA[c918016ef6719076ef8ed144110a7b75]]></item>
+		<item id="/common/footer.php"><![CDATA[e0546c700209bc8f3b6fdf94693afefa]]></item>
+		<item id="/common/index.htm"><![CDATA[7215ee9c7d9dc229d2921a40e899ec5f]]></item>
+		<item id="/common/widthauto.css"><![CDATA[b2cc556e65fab341c53a3c0e73b39109]]></item>
+		<item id="/discuz_style_veikei_dz_news_20131110_metro.xml"><![CDATA[a73424a14006ac122d54dbb40d83969a]]></item>
+		<item id="/images/bg_body.png"><![CDATA[8f8b78649b02582026f10b5ea07ec53f]]></item>
+		<item id="/images/bg_toptb.png"><![CDATA[88780f7e4ba8655f793dafbad08230fd]]></item>
+		<item id="/images/index.htm"><![CDATA[7215ee9c7d9dc229d2921a40e899ec5f]]></item>
+		<item id="/images/logo.png"><![CDATA[5e9a3acce98799a83c613b085cfd3c53]]></item>
+		<item id="/images/nv.gif"><![CDATA[48a6067a7b021909e9f8f52e9ae3262c]]></item>
+		<item id="/images/nv_a.gif"><![CDATA[f90a019344ae1507a2f7badf47f1b888]]></item>
+		<item id="/images/vlineb.png"><![CDATA[3aca34f44cd3d128e8f36cca395300de]]></item>
+		<item id="/index.htm"><![CDATA[7215ee9c7d9dc229d2921a40e899ec5f]]></item>
+		<item id="/preview.jpg"><![CDATA[61e6c12c0ec81d40457f83cc9711618b]]></item>
+		<item id="/preview_large.jpg"><![CDATA[acda5ed9f655702a0d42eaea84181783]]></item>
+	</item>
+</root>
