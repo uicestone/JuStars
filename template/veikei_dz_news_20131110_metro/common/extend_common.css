@@ -78,3 +78,9 @@ td, th, div { word-break:break-all; word-wrap:break-word }
 /*
 #nv li a ,#nv li.a , #nv li a:hover, #nv li.hover a:hover, #nv li.hover a {  color: #333;  }
 */
+
+body { background: #FFECD7; }
+.frame { background: none; }
+.frame, .frame-tab { background: none; }
+.frame-tab .tb-c { padding: 10px 7px; }
+.ml li {padding: 0 3px 5px;}

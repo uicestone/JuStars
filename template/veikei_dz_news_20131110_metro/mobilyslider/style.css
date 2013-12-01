@@ -1,0 +1,82 @@
+﻿.slider {
+	/*float:left;*/	
+	position:relative;
+	/*padding-bottom:26px;*/
+}
+
+.sliderContent {
+	float:left;
+	
+	clear:both;
+	position:relative;
+	overflow:hidden;
+}
+
+.sliderArrows a, .sliderArrows a:focus, .sliderArrows a:hover {
+	display:block;
+	text-indent:-9999px;
+	outline:none;
+	z-index:50;
+	background-image:url(prev_next.png);
+	width:42px;
+	height:42px;
+	position:absolute;
+	top:50%;
+	margin-top:-34px;
+}
+
+.prev {
+	background-position:0 0;
+	left:15px;
+}
+
+.prev:hover {
+	background-position:0 -44px;
+}
+
+.next {
+	right:15px;
+	background-position:-44px 0;
+}
+
+.next:hover {
+	background-position:-44px -44px;
+}
+
+.sliderContent .item {
+	position:absolute;
+
+	background:#fff;
+}
+
+.sliderBullets {
+	position:absolute;
+	bottom:0.5em;
+	right:10px;
+	z-index:50;
+}
+
+.sliderBullets a {
+	display:block;
+	float:left;
+	text-indent:-9999px;
+	outline:none;
+	margin-left:5px;
+	width:10px;
+	height:11px;
+	background:url(bullets.png) no-repeat;
+}
+
+.sliderBullets .active {
+	background-position:0 -11px;
+}
+
+.sliderContent a {
+	outline:none;
+}
+
+.item img {
+	border: none;
+}
+
+
