@@ -79,8 +79,21 @@ td, th, div { word-break:break-all; word-wrap:break-word }
 #nv li a ,#nv li.a , #nv li a:hover, #nv li.hover a:hover, #nv li.hover a {  color: #333;  }
 */
 
-body { background: #FFECD7; }
+body { background: #FFECD7 url({STYLEIMGDIR}/background.jpg); }
 .frame { background: none; }
 .frame, .frame-tab { background: none; }
 .frame-tab .tb-c { padding: 10px 7px; }
 .ml li {padding: 0 3px 5px;}
+#hd{ background: url({STYLEIMGDIR}/headerbg.png) no-repeat center 137px; }
+#nv {background: none;}
+#nv li { margin: 9px 0; height: 33px; line-height: 33px;}
+
+#nv li.a { background: #BF5300; }
+#qmenu {color: #FF6E00; }
+#nv li a{ padding: 0 40px; color: #FF6E00; height: 33px; line-height: 33px; }
+#nv li a:hover { background: #F16700; color: #FFF;}
+#nv ul{ padding-left: 130px; background: url({STYLEIMGDIR}/navbg.png) no-repeat center; }
+
+#scbar { background: none; }
+
+.xi2, .xi2 a, .xi3 a{ color: #898989; }
