@@ -1,0 +1,139 @@
+<!--{template common/header}-->
+<!--[name]picture list[/name]-->
+<!--{eval $list = array();}-->
+<!--{eval $wheresql = category_get_wheresql($cat);}-->
+<!--{eval $list = category_get_list($cat, $wheresql, $page);}-->
+<!--<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<a href="$_G[setting][navs][1][filename]">{lang portal}</a> <em>&rsaquo;</em>
+		{loop $cat[ups] $value} <a href="{$portalcategory[$value['catid']]['caturl']}">$value[catname]</a><em>&rsaquo;</em>{/loop}
+		$cat[catname]
+	</div>
+</div>-->
+
+
+
+<!--{ad/text/wp a_t}-->
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+
+<div style="height:480px;margin:0px auto;background:#9FA0A0;">
+	<div class="w clearboth">
+		<div class="picba ">
+			<div id="pic-nav" class="clearfix">
+				<div class="fL">
+					<div class="pic-1 focus-pic">
+						<a href=""><img width="300" height="300" alt="" src="/template/veikei_dz_news_20131110_metro/images/14.jpg"></a>
+						<span style="display: none;"></span>
+						<a class="pic-text" href="" style="display: none;">美乳美腿任你看</a>
+					</div>
+					<div class="pic-2 focus-pic">
+						<a href=" " target="_blank"><img width="300" height="150" alt="" src="/template/veikei_dz_news_20131110_metro/images/01.jpg"></a>
+						<span style="display: none;"></span>
+						<a href=" " class="pic-text" target="_blank" style="display: none;">武装到牙齿的车</a>
+					</div>
+				</div>
+				<div class="fR">
+					<div class="pn-t">
+						<div class="pic-3 focus-pic fL">
+							<a href="" target="_blank"><img width="300" height="150" alt="" src="http://ss10.sinaimg.cn/6371a8994dd6d1b330701"></a>
+							<span style="display: none;"></span>
+							<a href="" class="pic-text" target="_blank" style="display: none;">乌拉泊怀古</a>
+						</div>
+						<a href="/gallery/zijia/" class="text-o fL">自驾</a>
+						<div class="pic-4 focus-pic fL">
+							<a href="" target="_blank"><img width="150" height="150" alt="" src="http://ss10.sinaimg.cn/6371a8994dd6d1b385148"></a>
+							<span style="display: none;"></span>
+							<a href="" class="pic-text" target="_blank" style="display: none;">呼伦贝尔自驾攻略</a>
+						</div>
+					</div>
+					<div class="pn-m">
+						<a href="/gallery/meinv/" class="text-p fL">美女</a>
+						<div class="pic-5 focus-pic fL">
+							<a href="" target="_blank"><img width="150" height="150" alt="" src="http://ss10.sinaimg.cn/6371a8994dd6d1b389dcc"></a>
+							<span style="display: none;"></span>
+							<a href="" class="pic-text" target="_blank" style="display: none;">轻熟女的浪漫邂逅</a>
+						</div>
+						<div class="pic-6 focus-pic fL">
+							<a href="" target="_blank"><img width="300" height="150" alt="" src="http://ss10.sinaimg.cn/932417794db3a38bcae1c"></a>
+							<span style="display: none;"></span>
+							<a href="" class="pic-text" target="_blank" style="display: none;">阿斯顿马丁Rapide提车</a>
+						</div>
+					</div>
+					<div class="pn-b">
+						<div class="pic-7 focus-pic fL">
+							<a href="http://blog.sina.com.cn/s/blog_537e9dd70102eabt.html" target="_blank"><img width="150" height="150" alt="" src="http://ss10.sinaimg.cn/630f20894dca441a9a89d"></a>
+							<span style="display: none;"></span>
+							<a href="http://blog.sina.com.cn/s/blog_537e9dd70102eabt.html" class="pic-text" target="_blank" style="display: none;">探访老挝石缸平原</a>
+						</div>
+						<a href="/gallery/gaizhuang/" class="text-b fL">改装</a>
+						<div class="pic-8 focus-pic fL">
+							<a href="http://weiba.weibo.com/10077/t/zy1a0FNeG" target="_blank"><img width="300" height="150" alt="" src="http://ss10.sinaimg.cn/6371a8994dd6d1b3244f6"></a>
+							<span style="display: none;"></span>
+							<a href="http://weiba.weibo.com/10077/t/zy1a0FNeG" class="pic-text" target="_blank" style="display: none;">北京百辆跑车聚会</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="ct" class="ct2 wp cl">
+	<div class="wp">
+		<!--{ad/articlelist/mbm hm/1}--><!--{ad/articlelist/mbm hm/2}-->
+		<!--[diy=listcontenttop]--><div id="listcontenttop" class="area"></div><!--[/diy]-->
+		<div class="wp">
+			<div style="height: 10px;">
+			</div>
+			<!--{if $cat[subs]}-->
+			<div class="bm_c bbda">
+				{lang sub_category}:&nbsp;&nbsp;
+				<!--{eval $i = 1;}-->
+				<!--{loop $cat[subs] $value}-->
+				<!--{if $i != 1}--><span class="pipe">|</span><!--{/if}--><a href="{$portalcategory[$value['catid']]['caturl']}" class="xi2">$value[catname]</a><!--{eval $i--;}-->
+				<!--{/loop}-->
+			</div>
+			<!--{/if}-->
+			<div class="bm_c xld" style="padding: 0;">
+			<!--{loop $list['list'] $value}-->
+				<!--{eval $highlight = article_title_style($value);}-->
+				<!--{eval $article_url = fetch_article_url($value);}-->
+					<div class="picture-block">
+						<div style="height:15px;"></div>
+						<div style="width:200px;height:auto;margin:0px auto">
+							<a href="$article_url"><img width="200px" height="auto" src="$value[pic]" alt=""></a>
+						</div>
+						<div style="width:200px;height:50px;margin:0px auto;">
+							<div style="height:4px;"></div>
+							<div style="text-align:left;">
+								<label style="font:bold 12px 微软雅黑;color:#3E3A39;">$value[title]</label>
+								<div style="height:5px;"></div>
+								<div>
+									<img src="/template/veikei_dz_news_20131110_metro/images/scanned-01.png"><label style="color:#9FA0A0;font-size:10px;">3</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+			<!--{/loop}-->
+			</div>
+			<!--[diy=listloopbottom]--><div id="listloopbottom" class="area"></div><!--[/diy]-->
+		</div>
+		<!--{ad/articlelist/mbm hm/3}--><!--{ad/articlelist/mbm hm/4}-->
+		<!--{if $list['multi']}--><div class="pgs cl">{$list['multi']}</div><!--{/if}-->
+
+		<!--[diy=diycontentbottom]--><div id="diycontentbottom" class="area"></div><!--[/diy]-->
+
+	</div>
+	
+</div>
+
+<div class="wp mtn">
+	<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+
+<!--{template common/footer}-->
