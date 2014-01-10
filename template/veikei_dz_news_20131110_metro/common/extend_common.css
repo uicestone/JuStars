@@ -110,7 +110,7 @@ body { background: #FFECD7 url({STYLEIMGDIR}/background.jpg); }
 
 
 .clearboth{clear:both;margin-top: 10px !important;margin-bottom:10px !important;}
-a{text-decoration:none;color:#444;}
+a{text-decoration:none;color:#444;word-break: break-word; word-wrap: break-word;}
 a:hover{text-decoration:underline;color:#0082cb}
 .w{width:960px;margin:0 auto}.n{display:none}
 .fL{float:left}
@@ -167,5 +167,5 @@ a:hover{text-decoration:underline;color:#0082cb}
 	box-shadow:1px 1px 1px #ccc;
 	border:1px solid #cdcdcf;
 	float:left;background:#FFF;
-	margin-left:4px;margin-right:4px
+	margin-left:4px;margin-right:4px;margin-bottom:10px;
 }
