@@ -3,6 +3,8 @@
 /data/template/
 /data/cache/
 /data/log/
+/data/back*
+/data/update*
 /config/config_global.php
 /config/config_ucenter.php
 /nbproject
