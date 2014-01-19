@@ -85,7 +85,7 @@ body { background: #FFF; }
 .frame, .frame-tab { background: none; }
 .frame-tab .tb-c { padding: 10px 7px; }
 .ml li {padding: 0 3px 5px;}
-#hd{ background: url({STYLEIMGDIR}/headerbg.png) no-repeat center 137px; }
+#hd{ background: url({STYLEIMGDIR}/headerbg.png) no-repeat center 110px; }
 #nv {background: none;}
 #nv li { margin: 9px 0; height: 33px; line-height: 33px;}
 
@@ -169,4 +169,20 @@ a:hover{text-decoration:underline;color:#0082cb}
 	border:1px solid #cdcdcf;
 	float:left;background:#FFF;
 	margin-left:4px;margin-right:4px;margin-bottom:10px;
+}
+
+.hdc.cl img{
+	width: 300px;
+}
+
+#scbar{
+	clear: right;
+	width: 530px;
+	position: relative;
+	left: 210px;
+	top: 30px;
+}
+
+#scbar_txt {
+	width: 300px;
 }
