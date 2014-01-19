@@ -178,9 +178,10 @@ a:hover{text-decoration:underline;color:#0082cb}
 #scbar{
 	clear: right;
 	width: 530px;
-	position: relative;
-	left: 210px;
-	top: 30px;
+	position: absolute;
+	right: 100px;
+	top: 70px;
+	border: none;
 }
 
 #scbar_txt {
