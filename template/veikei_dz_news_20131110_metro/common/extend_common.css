@@ -59,7 +59,7 @@ td, th, div { word-break:break-all; word-wrap:break-word }
 #wp .wp { width: auto; }
 #um .avt img { box-shadow:0px 1px 3px #eee; -moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px; padding: 2px; width: 48px; height: 48px; background: #fff; border:1px solid #fff; }
 
-#nv { height: 50px; line-height:50px;   background: url({STYLEIMGDIR}/nv.gif) no-repeat; }
+#nv { height: 50px; line-height:50px; margin-top:12px; background: url({STYLEIMGDIR}/nv.gif) no-repeat; }
 #nv ul { height: 50px; overflow: hidden; }
 #nv li { float: left; height: 50px; font-weight:normal; font-size: 14px; background: none; background: none /*url({STYLEIMGDIR}/nv_li.png) no-repeat 100% 0 */; }
 .ie_all #nv li { line-height: 50px; }
