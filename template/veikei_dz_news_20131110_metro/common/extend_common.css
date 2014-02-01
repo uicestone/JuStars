@@ -85,15 +85,15 @@ body { background: #FFF; }
 .frame, .frame-tab { background: none; }
 .frame-tab .tb-c { padding: 10px 7px; }
 .ml li {padding: 0 3px 5px;}
-#hd{ background: url({STYLEIMGDIR}/headerbg.png) no-repeat center 110px; }
+#hd{ background: #036EB8 url({STYLEIMGDIR}/headerbg.png) no-repeat center 118px; }
 #nv {background: none;}
-#nv li { margin: 9px 0; height: 33px; line-height: 33px;}
+#nv li { margin: 9px 0; height: 35px; line-height: 35px;}
 
 #nv li.a { background: #232323; }
 #qmenu {color: #FF6E00; }
-#nv li a{ padding: 0 40px; color: #666; height: 33px; line-height: 33px; }
+#nv li a{ padding: 0 40px; color: #666; height: 35px; line-height: 35px; }
 #nv li a:hover { background: #666; color: #FFF;}
-#nv ul{ padding-left: 130px; background: url({STYLEIMGDIR}/navbg.png) no-repeat center; }
+#nv ul{ padding-left: 130px; }
 
 #scbar { background: none; }
 
@@ -191,4 +191,8 @@ a:hover{text-decoration:underline;color:#0082cb}
 
 .title {
 	overflow: visible;
+}
+
+#um, #um a {
+	color: #EEE;
 }
