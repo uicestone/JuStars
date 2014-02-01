@@ -85,12 +85,14 @@ body { background: #FFF; }
 .frame, .frame-tab { background: none; }
 .frame-tab .tb-c { padding: 10px 7px; }
 .ml li {padding: 0 3px 5px;}
-#hd{ background: #036EB8 url({STYLEIMGDIR}/headerbg.png) no-repeat center 118px; }
+#hd{ padding-top: 20px; background: #036EB8 url({STYLEIMGDIR}/headerbg.png) no-repeat center 138px; }
 #hd a { color:#FFF; }
 #nv {background: none;}
 #nv li { margin: 9px 0; height: 35px; line-height: 35px;}
 
 #nv li.a { background: #232323; }
+#space #nv li.a { background: none; }
+
 #qmenu {color: #FF6E00; }
 #nv li a{ padding: 0 40px; color: #666; height: 35px; line-height: 35px; }
 #nv li a:hover { background: #666; color: #FFF;}
@@ -182,7 +184,7 @@ a:hover{text-decoration:underline;color:#0082cb}
 	width: 530px;
 	position: absolute;
 	right: 100px;
-	top: 70px;
+	top: 90px;
 	border: none;
 }
 
@@ -196,4 +198,8 @@ a:hover{text-decoration:underline;color:#0082cb}
 
 #um, #um a {
 	color: #EEE;
+}
+
+.p_pop li a{
+	color: #333;
 }
