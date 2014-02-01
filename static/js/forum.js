@@ -520,6 +520,7 @@ function showtime() {
 	setTimeout("showtime()", 1000);
 }
 function fixed_top_nv(eleid, disbind) {
+	/**
 	this.nv = eleid && $(eleid) || $('nv');
 	this.openflag = this.nv && BROWSER.ie != 6;
 	this.nvdata = {};
@@ -591,6 +592,7 @@ function fixed_top_nv(eleid, disbind) {
 		this.init();
 		_attachEvent(window, 'scroll', this.run);
 	}
+	*/
 }
 var previewTbody = null, previewTid = null, previewDiv = null;
 function previewThread(tid, tbody) {
