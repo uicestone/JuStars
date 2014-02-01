@@ -101,6 +101,7 @@ body { background: #FFF; }
 
 .justars-tab .blocktitle, .justars-tab .tab-title{ margin-bottom: 10px; border-bottom: 1px #000 solid; padding: 0 10px; }
 .justars-tab .blocktitle .titletext, .justars-tab .tab-title .tb .a { font-weight: normal; color: #000; background: #FFF; border-top: 3px #000 solid; border-left: 1px #000 solid; border-right: 1px #000 solid; }
+.justars-tab .blocktitle .titletext { height: 30px; padding: 0 10px; }
 .justars-tab .tab-title .tb .a a{ color:#000; font-weight: normal; }
 .justars-tab h3 a{ color: #ff6e01; }
 .justars-tab p { color: #898987; }
