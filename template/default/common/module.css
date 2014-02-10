@@ -473,7 +473,7 @@ Created & Modified by Alice, Monkey, Lushnis, Pony, Dfox & DragonLee.
 	Explain:		看贴页左侧的版块导航。宽度在CSS里没有默认值，宽度在后台设置
 	Last Modify:	Jane
 */
-.bdl { float: left; overflow: hidden; border: 1px solid #BDD7E3; background-color: #F5F9FB; }
+.bdl { float: right; overflow: hidden; border: 1px solid #BDD7E3; background-color: #F5F9FB; }
 	.ie6 .bdl { position: relative; }
 	.bdl_h { height: 32px; line-height: 22px; }
 .bdl .tbn { margin: 10px; }

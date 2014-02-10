@@ -694,8 +694,8 @@ CSS 写作注意事项：
 		.ie6 #ct { height: 300px; }
 		.mn { overflow: hidden; }
 		.ct1 { border: 1px solid {WRAPBORDERCOLOR}; border-top: none; }
-		.ct2 .mn { float: left; width: 730px; margin-bottom: 1em; }
-		.ct2 .sd { float: right; width: 220px; overflow: hidden; _overflow-y: visible; }
+		.ct2 .mn { float: right; width: 730px; margin-bottom: 1em; }
+		.ct2 .sd { float: left; width: 220px; overflow: hidden; _overflow-y: visible; }
 
 		.appl { float: left; overflow: hidden; margin-bottom: 10px; padding: 6px 10px; width: 117px; }
 
