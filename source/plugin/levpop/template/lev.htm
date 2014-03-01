@@ -1,0 +1,363 @@
+{subtemplate common/header}
+{eval include template($PLNAME.':js');}
+<div style="display:none">
+<span id="isaward5">{$lev_lang[minaward]}</span>
+<span id="noaward5">{$lev_lang[noaward]}</span>
+<span id="omsg"></span>
+</div>
+    <link href="{$PLSTATIC}img/slotpop.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{$PLSTATIC}img/slotmachine.js"></script>
+    <script type="text/javascript">
+        function Bingo(atwhere, isreal) {
+        	var stopatwhere = atwhere.split("-");
+        	stopatwhere = -(parseInt(stopatwhere[0]) * 125);
+        	$$('.myfruits').animate( {
+        		top :(stopatwhere)
+        	});
+        	$$('.slotsound').hide();
+        	$$('#ding').show();
+        	$$('#slotclose').show();
+        	$$('#lampstar').hide();
+        	$$('.nihong').hide();
+        	if (isreal) {
+        		$$("#slotop_infop").fadeIn().fadeOut().fadeIn().fadeOut().fadeIn()
+        				.fadeOut().fadeIn().fadeOut().fadeIn().html("Oh!my gad!{$lev_lang[gongxi]}");
+            	art.dialog({id:'msg', title:false, content:$$('#omsg').html(), lock:true, close:function (){$$('.slot_btn').click();}}); 
+        	//	$$(".slotinfo").hide();
+        	//	$$("#slotinfo4").fadeIn('slow')
+        	} else {
+        		$$("#slotop_infop").fadeIn().fadeOut().fadeIn().fadeOut().fadeIn()
+        				.fadeOut().fadeIn().fadeOut().fadeIn().html("{$lev_lang[nopopaward]}");
+        	//	$$(".slotinfo").hide();
+        	//	$$("#slotinfo7").fadeIn('slow')
+            	window.setTimeout(function (){$$('.slot_btn').click();}, 3000);
+        	}
+		}
+        function slotbarhand(isbingo, atwhere, is_real) {
+        	$$('#slotline1').slot( {
+        		direction :'ltr',
+        		vertical :true,
+        		speed :1,
+        		start :'auto',
+        		totle :3,
+        		result :isbingo,
+        		stopat :atwhere,
+        		isreal :is_real
+        	})
+        };
+        function closeSlotpop() {
+        	$$('.slotsound').hide();
+        	$$('#slotclose').parent().fadeOut();
+        	$$('#popbg').fadeOut("", function() {});
+        	nowbox = 1;
+        	$$('#slotbar').removeClass('slotbar_on').removeClass('slotbar_hide');
+        	$$("#slotbar").unbind("click", slotbarhandler)
+        };
+        $$(document).ready( function() {
+        	$$('.slot_btn').click( function() {
+        		slotpop("#slotpop", "298", "auto", 0.1);
+        		$$('#slotbar').animate( {
+        			top :60
+        		}, 500, function() {
+        			$$('#slotbar').animate( {
+        				top :80
+        			}, 400, function() {
+        				$$('#slotbar').animate( {
+        					top :60
+        				}, 300, function() {
+        					$$('#slotbar').animate( {
+        						top :80
+        					}, 200, function() {
+        						$$('#slotbar').animate( {
+        							top :60
+        						}, 100, function() {
+        							$$('#slotbar').animate( {
+        								top :80
+        							}, 100, function() {
+        								$$('#slotbar').animate( {
+        									top :60
+        								}, 100, function() {
+        									$$('#slotbar').animate( {
+        										top :80
+        									}, 100, function() {
+        									});
+        									$$('#slotbar').removeClass('slotbar_on')
+        								});
+        								$$('#slotbar').addClass('slotbar_on')
+        							});
+        							$$('#slotbar').removeClass('slotbar_on')
+        						});
+        						$$('#slotbar').addClass('slotbar_on')
+        					});
+        					$$('#slotbar').removeClass('slotbar_on')
+        				});
+        				$$('#slotbar').addClass('slotbar_on')
+        			});
+        			$$('#slotbar').removeClass('slotbar_on');
+        			$$('#spbar').show()
+        		});
+        		$$('.myfruits').animate( {
+        			top :0
+        		}, 2000);
+        		$$("#slotop_infop").html("{$lev_lang[tfree]} {$freenums} {$lev_lang[awardtips]}");
+        		$$(".slotinfo").hide();
+        		$$("#slotinfo1").show();
+        		$$("#slotbar").bind("click", {id :$$(this).attr('id')}, slotbarhandler)
+        	});
+        	$$('#slotclose').click( function() {
+        		$$('.slotsound').hide();
+        		$$(this).parent().fadeOut();
+        		$$('#popbg').fadeOut("", function() {
+        		});
+        		nowbox = 1;
+        		$$('#slotbar').removeClass('slotbar_on').removeClass('slotbar_hide');
+        		$$("#slotbar").unbind("click", slotbarhandler)
+        	})
+        });
+        function slotbarhandler(event, isbuy) {
+        	$$("#slotbar").unbind("click", slotbarhandler);
+        	$$.ajax({
+				type :"GET",
+				url :'{$PLURL}&m=1&'+ Math.random(),
+				dataType :"json",
+				cache :false,
+				data : {fh:'{FORMHASH}', isbuy:isbuy},
+				success : function(o) {
+					switch (o.stat) {
+					case '-1':
+						showWindow('login', 'member.php?mod=logging&action=login&referer='+ encodeURIComponent(window.location));
+			            $$('.slot_btn').click();
+						break;
+					case '-2':
+						art.dialog({
+							id:'msg', 
+							title:false, 
+							content:o.msg, 
+							lock:true, 
+						//	ok:function () {slotbarhandler(event, 1)}, 
+						//	cancel:function(){$$('.slot_btn').click();},
+							close:function (){$$('.slot_btn').click();}
+						}); 
+						break;
+					case '-3':
+						art.dialog({id:'msg', title:false, content:o.msg, lock:true, close:function (){}}); 
+						break;
+					case 'ok':
+						var result = false;
+						var isreal = false;
+						if (o.result == 1) {
+							if (o.res    =="1") result = true;
+							if (o.isreal =="1") isreal = true;
+							$$('#omsg').html(o.msg);
+							if (o.isaward =="0") $$('.slot_motto').html('{$lev_lang[noaward]}');
+						} else if (o.result == 0) {
+							$$('.slot_motto').html('{$lev_lang[noaward]}');
+						}
+						var stopat  = o.num;
+						isfirstslot = 1;
+						nowbox      = 1;
+						
+						$$('#slotbar').addClass('slotbar_hide');
+						$$('#slotbar').animate({top :60}, 100, function() {$$(this).animate({top :80}, 100, function() {$$(this).addClass('slotbar_on')});});
+						$$('#lampstar').show();
+						$$('.nihong').show();
+						$$('#slotclose').hide();
+						$$('.slotsound').hide();
+						$$('#sbar').show();
+						window.setTimeout(slotbarhand, 750, result, stopat, isreal);
+						$$("#slotbar").unbind("click", slotbarhandler);
+						break;
+					}
+				},
+				error : function() {
+					$$("#slotop_infop").html("{$lev_lang[errnet]}");
+					$$(".slotinfo").hide();
+					$$("#slotinfo5").show()
+				}
+            });
+        }
+        $$(document).ready(function () {
+            $$('.slot_btn').click();
+        });
+        
+    </script>
+    
+    <div class="popmain" {if $_PLG[zhutiimg]}style="background:url({$PLSTATIC}img/{$_PLG[zhutiimg]}) no-repeat;"{/if}>
+    <div class="popcontent">
+<input type="button"  class="slot_btn" style="display:none" value="" />
+<div id="slotpop">
+	<div id="slot_top"></div>
+    <div id="slotbox" class="slotbox">
+    	<div id="slotop_info"><p id="slotop_infop">{$lev_lang[popaward]}</p></div>
+        <div id="playbox">
+        	<div class="slotline" id="slotline1">
+            	<div class="myfruits">
+                    <div class="line_ line1"></div>
+                    <div class="line_ line2"></div>
+                    <div class="line_ line3"></div>
+                    <div class="line_ line4"></div>
+                    <div class="line_ line5"></div>
+                    <div class="line_ line6"></div>
+                 </div>                   
+            </div>
+            <div class="slotline" id="slotline2">
+            	<div class="myfruits">
+                    <div class="line_ line1"></div>
+                    <div class="line_ line2"></div>
+                    <div class="line_ line3"></div>
+                    <div class="line_ line4"></div>
+                    <div class="line_ line5"></div>
+                    <div class="line_ line6"></div>
+                 </div> 
+            </div>
+            <div class="slotline" id="slotline3">
+            	<div class="myfruits">
+                    <div class="line_ line1"></div>
+                    <div class="line_ line2"></div>
+                    <div class="line_ line3"></div>
+                    <div class="line_ line4"></div>
+                    <div class="line_ line5"></div>
+                    <div class="line_ line6"></div>
+                 </div> 
+            </div>
+        </div>
+        <div id="slotbot_info">
+        	<div class="slotinfo" id="slotinfo1">
+                <dl class="slottip">
+                    <dt><p class="ready_p">{$lev_lang[popdesc]}</p></dt>
+                    <dd></dd>
+                </dl>
+            </div>
+            <div class="slotinfo" id="slotinfo2" style="display:none;">
+            	<dl class="slottip">
+            	<dt><p class="slot_motto"></p></dt>
+                <dd></dd>                
+            	</dl>
+            </div>
+			<div class="slotinfo" id="slotinfo5" style="display:none;">
+				<dl class="slottip">
+					<dt><p class="ready_p">{$lev_lang[errnet]}</p></dt>
+					<dd></dd>
+				</dl>
+			</div>
+        </div>
+    </div>
+    <div id="slot_bot"></div>	
+    <div class="slotbar" title="" id="slotbar"></div>
+    <!--<div class="slotclose" title="" id="slotclose"></div>-->
+	<div class="lampstar" id="lampstar"></div>
+	<div class="nihong" id="nihong1"></div>
+	<div class="nihong" id="nihong2"></div>
+	    <div class="slotsound" id="sbar">
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width=1 height=1>
+		<param name=movie value="{$PLSTATIC}img/sbar.swf">
+		<param name=quality value=high>
+		<param name=wmode value=transparent>
+		<embed src="{$PLSTATIC}img/sbar.swf" quality=high wmode=transparent width=1 height=10 type= "application/x-shockwave-flash" pluginspage=" http://www.macromedia.com/shockwave/download/index.cgi?P1_Pr od_Version=ShockwaveFlash"></embed>
+		</object>
+		</div>
+		<div class="slotsound" id="spbar">
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width=1 height=1>
+		<param name=movie value="{$PLSTATIC}img/spbar.swf">
+		<param name=quality value=high>
+		<param name=wmode value=transparent>
+		<embed src="{$PLSTATIC}img/spbar.swf" quality=high wmode=transparent width=1 height=10 type= "application/x-shockwave-flash" pluginspage=" http://www.macromedia.com/shockwave/download/index.cgi?P1_Pr od_Version=ShockwaveFlash"></embed>
+		</object>
+		</div>
+		<div class="slotsound" id="loop">
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width=1 height=1>
+		<param name=movie value="{$PLSTATIC}img/loop.swf">
+		<param name=quality value=high>
+		<param name=wmode value=transparent>
+		<embed src="{$PLSTATIC}img/loop.swf" quality=high wmode=transparent width=1 height=10 type= "application/x-shockwave-flash" pluginspage=" http://www.macromedia.com/shockwave/download/index.cgi?P1_Pr od_Version=ShockwaveFlash"></embed>
+		</object>
+		</div>
+		<div class="slotsound" id="ding">
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width=1 height=1>
+		<param name=movie value="{$PLSTATIC}img/ding.swf">
+		<param name=quality value=high>
+		<param name=wmode value=transparent>
+		<param src="{$PLSTATIC}img/ding.swf" quality=high wmode=transparent width=1 height=10 type= "application/x-shockwave-flash" pluginspage=" http://www.macromedia.com/shockwave/download/index.cgi?P1_Pr od_Version=ShockwaveFlash"></embed>
+		</object>
+		</div>
+		<div class="slotsound" id="lose">
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width=1 height=1>
+		<param name=movie value="{$PLSTATIC}img/lose.swf">
+		<param name=quality value=high>
+		<param name=wmode value=transparent>
+		<embed src="{$PLSTATIC}img/lose.swf" quality=high wmode=transparent width=1 height=10 type= "application/x-shockwave-flash" pluginspage=" http://www.macromedia.com/shockwave/download/index.cgi?P1_Pr od_Version=ShockwaveFlash"></embed>
+		</object>
+		</div>
+		<div class="slotsound" id="nlose">
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width=1 height=1>
+		<param name=movie value="{$PLSTATIC}img/nlose.swf">
+		<param name=quality value=high>
+		<param name=wmode value=transparent>
+		<embed src="{$PLSTATIC}img/nlose.swf" quality=high wmode=transparent width=1 height=10 type= "application/x-shockwave-flash" pluginspage=" http://www.macromedia.com/shockwave/download/index.cgi?P1_Pr od_Version=ShockwaveFlash"></embed>
+		</object>
+		</div>	
+		</div>	
+</div>
+<div class="aright">
+<div class="actv">{$lev_lang[acttime]}{eval echo lev_class::$PL_G[starttime];} - {eval echo lev_class::$PL_G[endtime];}</div>
+</div>
+
+<div class="aright" style="border-top:none;">
+<table border="0" width="100%">
+<!--<tr>
+<th colspan="4" class="yingxiong"><b>{$lev_lang[bigrank]}</b></th>
+</tr>
+<tr class="thtitle">
+{$lev_lang[thtitle]}
+</tr>-->
+{loop $awardbig $k $v}
+<tr>
+<td><img src="{$PLSTATIC}img/award{eval echo ($k+1);}.png"></td>
+<td>$v[username]</td>
+<td>{if $v[goods]}$v[goods].$v[awardscore]{else}<span style="color:#aaa">{$lev_lang[noawards]}</span>{/if}</td>
+<td class="awardtime">{eval echo dgmdate($v['addtime'], 'u');}</td>
+</tr>
+{/loop}
+</table>
+</div>
+
+<div class="aright">
+<table border="0" width="100%">
+<tr>
+<th colspan="4" class="yingxiong"><a href="plugin.php?id=levaward:lev&order=1"><b>{$lev_lang[rank]}</b></a></th>
+</tr>
+<tr class="thtitle">
+{$lev_lang[thtitle]}
+</tr>
+{loop $awardlist $k $v}
+<tr>
+<td>{eval echo ($k+1);}</td>
+<td>$v[username]</td>
+<td>{if $v[goods]}$v[goods].$v[awardscore]{else}<span style="color:#aaa">{$lev_lang[noawards]}</span>{/if}</td>
+<td class="awardtime">{eval echo dgmdate($v['addtime'], 'u');}</td>
+</tr>
+{/loop}
+</table>
+</div>
+</div>
+    <div class="popmain">
+{if lev_class::$PL_G[guize]}
+<div class="levaward levaext">
+<div class="actv"><b>{$lev_lang[guize]}</b></div>
+{eval echo lev_class::$PL_G[guize];}
+</div>
+{/if}
+{if lev_class::$PL_G[shuoming]}
+<div class="levaward levaext">
+<div class="actv"><b>{$lev_lang[shuoming]}</b></div>
+{eval echo lev_class::$PL_G[shuoming];}
+</div>
+{/if}
+{if lev_class::$PL_G[awardgoods]}
+<div class="levaward levaext">
+<div class="actv"><b>{$lev_lang[awardgoods]}</b></div>
+{eval echo lev_class::$PL_G[awardgoods];}
+</div>
+{/if}
+</div>
+{subtemplate common/footer}
