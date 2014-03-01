@@ -1,10 +1,13 @@
 /data/attachment/
-/data/diy/
-/data/template/
-/data/cache/
-/data/log/
 /data/back*
+/data/cache/
+/data/diy/
+/data/log/
+/data/sysdata/
+/data/template/
 /data/update*
+
 /config/config_global.php
 /config/config_ucenter.php
+
 /nbproject
