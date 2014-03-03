@@ -85,7 +85,7 @@ body { background: #FFF; }
 .frame, .frame-tab { background: none; }
 .frame-tab .tb-c { padding: 10px 7px; }
 .ml li {padding: 0 3px 5px;}
-#hd{ padding-top: 20px; background: #036EB8 url({STYLEIMGDIR}/headerbg.png) no-repeat center 138px; }
+#hd{ padding-top: 20px; background: #035AB8 url({STYLEIMGDIR}/headerbg.png) no-repeat center 138px; }
 #hd a { color:#FFF; }
 #nv {background: none;}
 #nv li { margin: 9px 0; height: 35px; line-height: 35px;}
@@ -102,7 +102,7 @@ body { background: #FFF; }
 
 .xi2, .xi2 a, .xi3 a{ color: #898989; }
 
-.justars-tab .blocktitle, .justars-tab .tab-title{ margin-bottom: 10px; border-bottom: 1px #000 solid; padding: 0 10px; }
+.justars-tab .blocktitle, .justars-tab .tab-title{ margin-bottom: 10px; border-bottom: 1px #000 solid; padding: 0 10px; background: #F1F1F1; }
 .justars-tab .blocktitle .titletext, .justars-tab .tab-title .tb .a { font-weight: normal; color: #000; background: #FFF; border-top: 3px #000 solid; border-left: 1px #000 solid; border-right: 1px #000 solid; }
 .justars-tab .blocktitle .titletext { height: 30px; padding: 0 10px; }
 .justars-tab .tab-title .tb .a a{ color:#000; font-weight: normal; }
