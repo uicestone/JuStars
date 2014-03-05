@@ -102,9 +102,9 @@ body { background: #FFF; }
 
 .xi2, .xi2 a, .xi3 a{ color: #898989; }
 
-.justars-tab .blocktitle, .justars-tab .tab-title{ margin-bottom: 10px; border-bottom: 1px #000 solid; padding: 0 10px; background: #F1F1F1; }
-.justars-tab .blocktitle .titletext, .justars-tab .tab-title .tb .a { font-weight: normal; color: #000; background: #FFF; border-top: 3px #000 solid; border-left: 1px #000 solid; border-right: 1px #000 solid; }
-.justars-tab .blocktitle .titletext { height: 30px; padding: 0 10px; }
+.justars-tab .blocktitle, .justars-tab .tab-title{ margin-bottom: 10px; border-bottom: 1px #000 solid; padding: 0 10px; background: #F1F1F1; height: 25px; }
+.justars-tab .blocktitle .titletext, .justars-tab .tab-title .tb .a { font-weight: normal; color: #000; background: #FFF; border-top: 1px #000 solid; border-left: 1px #000 solid; border-right: 1px #000 solid; }
+.justars-tab .blocktitle .titletext { height: 25px; padding: 0 10px; line-height: 25px; }
 .justars-tab .tab-title .tb .a a{ color:#000; font-weight: normal; }
 .justars-tab h3 a{ color: #ff6e01; }
 .justars-tab p { color: #898987; }
@@ -194,6 +194,7 @@ a:hover{text-decoration:underline;color:#0082cb}
 
 .title {
 	overflow: visible;
+	
 }
 
 #um, #um a {
