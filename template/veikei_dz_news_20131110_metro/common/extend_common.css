@@ -66,7 +66,7 @@ td, th, div { word-break:break-all; word-wrap:break-word }
 .ie6 #nv li { line-height: 50px; }
 #nv li a { float: left; padding:0 20px; text-align:center; width: auto; height: 50px; display:block; line-height: 50px; color: #fff; font-size:16px; background: none; }
 #nv li span { display: none; }
-#nv li.a { margin-left:0px; background: url({STYLEIMGDIR}/nv_a.gif) repeat-x; }
+#nv li.a { margin-left:0px; background: #FFF; }
 #nv li a:hover { color:#fff; text-decoration:none; background: url({STYLEIMGDIR}/nv_a.gif) repeat-x; }
 #nv li.hover a:hover, #nv li.hover a { color:#fff; background: url({STYLEIMGDIR}/nv_a.gif) repeat-x; }
 #qmenu { margin-top:10px; }
@@ -85,17 +85,17 @@ body { background: #FFF; }
 .frame, .frame-tab { background: none; }
 .frame-tab .tb-c { padding: 10px 7px; }
 .ml li {padding: 0 3px 5px;}
-#hd{ padding-top: 20px; background: #035AB8 url({STYLEIMGDIR}/headerbg.png) no-repeat center 138px; }
+#hd{ padding-top: 20px; background: url({STYLEIMGDIR}/headerbg.png) no-repeat center 170px; }
 #hd a { color:#FFF; }
 #nv {background: none;}
 #nv li { margin: 9px 0; height: 35px; line-height: 35px;}
 
-#nv li.a { background: #232323; }
+#nv li.a a { color: #2685BF; }
 #space #nv li.a { background: none; }
 
 #qmenu {color: #FF6E00; }
-#nv li a{ padding: 0 40px; color: #666; height: 35px; line-height: 35px; }
-#nv li a:hover { background: #666; color: #FFF;}
+#nv li a{ padding: 0 40px; color: #FFF; height: 35px; line-height: 35px; }
+#nv li a:hover { background: none; color: #FFF;}
 #nv ul{ padding-left: 130px; }
 
 #scbar { background: none; }
@@ -110,8 +110,8 @@ body { background: #FFF; }
 .justars-tab p { color: #898987; }
 .justars-tab .tab-title{ background: none; width: 90% important; padding: 0; }
 .justars-tab .tb a{ border: none; margin-left: 1px; margin-right: 1px;}
-.justars-tab .tb li a{background: #ccc;color: #fff;height: 26px;line-height: 26px;position: relative;top: 6px;}
-.justars-tab .tb li.a a{ background: none; height: 30px;line-height: 32px;position: relative;top: 0;}
+.justars-tab .tb li a{background: #ccc;color: #fff;height: 22px;line-height: 22px;position: relative;top: 3px;}
+.justars-tab .tb li.a a{ background: none; height: 25px;line-height: 25px;position: relative;top: 0;}
 
 
 .clearboth{clear:both;margin-top: 10px !important;margin-bottom:10px !important;}
@@ -198,7 +198,7 @@ a:hover{text-decoration:underline;color:#0082cb}
 }
 
 #um, #um a {
-	color: #EEE;
+	color: #333;
 }
 
 .p_pop li a{
@@ -214,4 +214,12 @@ a:hover{text-decoration:underline;color:#0082cb}
 
 .forum-entry:hover{
 	background: url('/template/veikei_dz_news_20131110_metro/images/forum_entry_hover.png');
+}
+
+.top1 a{
+	font-size: 14px;
+}
+
+.module.cl h2{
+	margin-bottom: 5px;
 }
