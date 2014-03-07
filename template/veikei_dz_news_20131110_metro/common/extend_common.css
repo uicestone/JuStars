@@ -86,7 +86,7 @@ body { background: #FFF; }
 .frame-tab .tb-c { padding: 10px 7px; }
 .ml li {padding: 0 3px 5px;}
 #hd{ padding-top: 20px; background: url({STYLEIMGDIR}/headerbg.png) no-repeat center 170px; }
-#hd a { color:#FFF; }
+#hd a { color:#333; }
 #nv {background: none;}
 #nv li { margin: 9px 0; height: 35px; line-height: 35px;}
 
