@@ -17,7 +17,3 @@ jQuery(function(){
 		jQuery(this).parent().parent().next('.tb-c').children('#' + activeTab + '_content').show().siblings().hide();
 	});
 });
-
-jQuery(function(){
-	jQuery('a').attr('target', '_blank');
-});
