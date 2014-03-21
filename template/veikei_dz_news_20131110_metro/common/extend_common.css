@@ -70,7 +70,7 @@ td, th, div { word-break:break-all; word-wrap:break-word }
 #nv li a:hover { color:#fff; text-decoration:none; background: url({STYLEIMGDIR}/nv_a.gif) repeat-x; }
 #nv li.hover a:hover, #nv li.hover a { color:#fff; background: url({STYLEIMGDIR}/nv_a.gif) repeat-x; }
 #qmenu { margin-top:10px; }
-
+#nv, #mu{ border-left: 0; border-right: 0; }
 .ct2_a, .ct3_a { background-color:#fff; }
 
 
@@ -86,6 +86,7 @@ body { background: #FFF; }
 .frame-tab .tb-c { padding: 10px 7px; }
 .ml li {padding: 0 3px 5px;}
 #hd{ padding-top: 20px; background: url({STYLEIMGDIR}/headerbg.png) no-repeat center 170px; }
+#hd .wp { width: 960px !important; }
 #hd a { color:#333; }
 #nv {background: none;}
 #nv li { margin: 9px 0; height: 35px; line-height: 35px;}
