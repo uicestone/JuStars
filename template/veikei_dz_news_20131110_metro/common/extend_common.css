@@ -70,7 +70,7 @@ td, th, div { word-break:break-all; word-wrap:break-word }
 #nv li a:hover { color:#fff; text-decoration:none; background: url({STYLEIMGDIR}/nv_a.gif) repeat-x; }
 #nv li.hover a:hover, #nv li.hover a { color:#fff; background: url({STYLEIMGDIR}/nv_a.gif) repeat-x; }
 #qmenu { margin-top:10px; }
-#nv, #mu{ border-left: 0; border-right: 0; }
+#nv, #mu{ border-left: 0 !important; border-right: 0 !important; }
 .ct2_a, .ct3_a { background-color:#fff; }
 
 
