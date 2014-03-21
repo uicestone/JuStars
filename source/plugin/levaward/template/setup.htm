@@ -1,0 +1,181 @@
+
+<style>
+.levaward_thcss {border-bottom: 1px dotted #CDCDCD;}
+</style>
+<table width="100%" class="levaward_thcss setup_status" id="setup1" data="1">
+<tbody>
+<tr><th style="color:red">*{$lev_lang[m4100]}{$lev_lang[mh]}</th><td>
+{eval $udoing = unserialize($_PLG['udoing']);}
+{loop $_systype $k $r}
+{if $_G[adminid] !=1}
+	{if !in_array($k, $udoing)}{eval continue;}{/if}
+{/if}
+	{if !$systype}{eval $systype = $k;}{/if}
+	<a href="javascript:;" onclick="systypes('{$k}', this)" 
+	class="joined {if $systype==$k}hor{/if}" style="margin:5px;">{$r}</a>
+{/loop}
+{if !$systype}{eval ob_clean();showmessage($lev_lang[error].$lev_lang[udoingtips]);}{/if}
+<input type="hidden" name="info[systype]" id="systype" value="{$systype}"/>
+</td></tr>
+
+<tr><th style="color:red">*{$lev_lang[m4101]}{$lev_lang[mh]}</th><td>
+<input type="text" name="info[title]" id="title" value="{$title}" class="px" />
+<font color="#999">{$lev_lang[m402]}</font>
+</td></tr>
+
+<tr>
+<th style="color:red;padding-top:6px;" valign="top">*{$lev_lang[m4103]}{$lev_lang[mh]}</th>
+<td valign="top"><input type="file" name="thumb" id="thumb" class="">
+{if !$thumb}
+<font color="#999">{$lev_lang[m4104]}{$_PLG[uploadsize]}KB
+</font>
+{/if}</td>
+</tr>
+{if $thumb}
+<tr id="thumbed">
+<th></th>
+<td><a href="{$uploadurl}{$thumb}" target="_blank" style="float:left;">
+<img src="{$uploadurl}{$thumb}" width="120" height="85" style="border:1px #ddd solid;margin-right:5px;"/></a>
+<font color="#666">{$lev_lang[m4104]}{$_PLG[uploadsize]}KB</font></td>
+</tr>
+{/if}
+
+<tr><th style="color:red">*{$lev_lang[doing17]}{$lev_lang[mh]}</th><td>
+<select name="info[typeid]" id="typeid">
+<option value="0">{$lev_lang[m4105]}</option>
+{loop $_types $k $r}
+<option value="{$k}">{$r}</option>
+{/loop}
+</select> 
+<script>$$('#typeid').val('{$typeid}')</script> 
+</td></tr>
+
+<tr><th>{$lev_lang[m4106]}{$lev_lang[mh]}</th><td>
+<input type="text" value="{if $starttime}{eval echo date('Y-m-d H:i', $starttime);}{/if}" 
+onclick="showcalendar(event, this, 1)" class="px" id="starttime" name="info[starttime]"> 
+ <font color="#999">{$lev_lang[m4107]}</font>
+</td></tr>
+
+<tr><th style="color:red">*{$lev_lang[m4108]}{$lev_lang[mh]}</th><td>
+<input type="text" value="{if $endtime}{eval echo date('Y-m-d H:i', $endtime);}{else}{$lev_lang[cdoing]}{/if}" 
+onclick="showcalendar(event, this, 1)" class="px" id="endtime" name="info[endtime]">
+</td></tr>
+
+<tr><th style="color:red">*{$lev_lang[m4109]}{$lev_lang[mh]}</th><td>
+<textarea name="info[descs]" id="descs" class="px" style="height:50px;"
+>{$descs}</textarea> <font color="#999">100{$lev_lang[n255]}</font>
+</td></tr>
+
+</tbody>
+<tbody>
+{if !$edtid}
+<tr><th>{$lev_lang[m4110]}{$lev_lang[mh]}</th><td>
+<select name="info[tid]" id="tid" style="width:260px;">
+<option value="{$tid}">{if $tid}{$subject}{else}{$lev_lang[pslt]}{/if}</option>
+{$mytid}
+</select> 
+<font color="#999">{$lev_lang[m4111]}
+<a href='forum.php?mod=misc&action=nav' target="_blank">{$lev_lang[clicks]}</a></font>
+</td></tr>
+{/if}
+
+<tr><th>{$lev_lang[m4112]}{$lev_lang[mh]}</th><td>
+<input type="text" name="info[url]" id="url" value="{$url}" class="px" /> 
+<font color="#999">{$lev_lang[m4113]}</font>
+</td></tr>
+
+<tr><th>{$lev_lang[m4114]}{$lev_lang[mh]}</th><td>
+<input type="text" name="info[address]" id="address" value="{$address}" class="px" /> 
+ <font color="#999">{$lev_lang[m4115]}</font>
+</td></tr>
+
+</tbody>
+
+{eval include template($PLNAME.":systype");}
+
+</table>
+
+<table width="100%" class="levaward_thcss setup_status" id="setup2" style="display:none;">
+
+<tr><th>{$lev_lang[m4122]}{$lev_lang[mh]}</th><td>
+{if !isset($freenum)}{eval $freenum = 1;}{/if}
+<input type="text" name="info[freenum]" id="freenum" value="{$freenum}" class="px" style="width:40px"/> {$lev_lang[ci]} 
+</td></tr>
+
+<tr><th>{$lev_lang[myadd16]}{$lev_lang[mh]}</th><td>
+<input type="text" name="info[maxjoinnum]" id="maxjoinnum" 
+value="{$maxjoinnum}" class="px" style="width:40px"/> {$lev_lang[ci]} 
+ <font color=#999>{$lev_lang[m4123]}{$lev_lang[mh]}</font>
+</td></tr>
+
+<tr><th>{$lev_lang[m4124]}{$lev_lang[mh]}</th><td>
+<input type="text" name="info[regscore]" id="regscore" value="{$regscore}" class="px" style="width:40px"/>{$lev_lang[extscore]} 
+&raquo; {$lev_lang[m4125]}{$lev_lang[extscore]}
+</td></tr>
+
+{eval include template($PLNAME.":tasks");}
+
+
+<tr class="mbprofile9"><th>{$lev_lang[m4126]}{$lev_lang[mh]}</th><td valign="middle">
+<select multiple="multiple" name="info[mbprofile][]" style="width:200px;height:100px;">
+<option value="">{$lev_lang[m425]}</option>
+{eval $pf = unserialize($mbprofile);}
+{loop $profile $r}
+<option value="{$r[fieldid]}" {if $pf && in_array($r[fieldid], $pf)}selected{/if}>{$r[title]}</option>
+{/loop}
+</select> 
+{$lev_lang[m4127]}
+<font color="#999">{$lev_lang[m427]}</font>
+</td></tr>
+
+
+{if lev_module::ismodule('stopip')}
+<tr><th>{$lev_lang[m4128]}{$lev_lang[mh]}</th><td>
+<textarea name="info[stopip]" id="stopip" class="px" style="height:50px"/>
+{$stopip}</textarea>
+ <font color=#999>{$lev_lang[m4129]}</font>
+</td></tr>
+{/if}
+
+</table>
+
+<table width="100%" class="levaward_thcss setup_status" id="setup3" {if $_GET[setup] !=3}style="display:none;"{/if}>
+
+{eval include template($PLNAME.":setaward");}
+
+</table>
+
+
+<script>
+
+function award_next(page, edtid) {
+	$$.get('{$remote}_myawards.'+ edtid +'&ajax', {page:page}, function(data){
+		if (data.indexOf('awards[]') >0) {
+			$$('tr.pages_awards').remove();
+			$$('#setaward').append(data);
+		}else {
+			$$('tr.pages_awards td').html('{$lev_lang[m4130]}');
+		}
+	});
+}
+
+function systypes(id, obj) {
+	$$('tbody.systypes').hide();
+	$$('#systype_'+ id).show();
+	if (obj) {
+		$$('a.joined.hor').removeClass('hor');
+		$$(obj).addClass('hor');
+		$$('#systype').val(id);
+	}
+}
+systypes('{$systype}')
+
+function toMao(val){
+	var myY = $$("#"+val).offset().top
+	$$("html,body").stop().animate({ scrollTop:myY},500);
+}
+</script>
+
+
+
+

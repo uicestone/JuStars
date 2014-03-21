@@ -1,0 +1,256 @@
+<div class="rfm">
+<table width="100%">
+<tr>
+<th style="color:red">*{$lev_lang[m40]}{$lev_lang[mh]}</th>
+<td><input type="text" value="{$title}" id="title" name="info[title]" class="px"></td>
+</tr>
+</table>
+</div>
+<div class="rfm">
+<table width="100%">
+<tr>
+<th style="color:red">*{$lev_lang[m41]}{$lev_lang[mh]}</th><td>
+<select name="info[awardtype]" id="awardtype" style="width:220px" onchange="awardtypecol(this.value)">
+{loop $_awardtype $r}
+<option value="{$r}">{$lev_lang['awardtype'.$r]}</option>
+{/loop}
+</select>
+<script>jQuery('#awardtype').val('{$awardtype}');</script>
+</td>
+</tr>
+</table>
+</div>
+<div class="rfm" style="display:none;" id="idcars_box">
+<table width="100%">
+<tr>
+<th style="color:red">*{$lev_lang[m42]}{$lev_lang[mh]}</th>
+<td width="400"><textarea name="info[idcars]" id="idcars" style="width:400px;height:100px;" class="px">{$idcars}</textarea></td><td>
+{$lev_lang[m43]}</td>
+</tr>
+</table>
+</div>
+
+<div class="rfm">
+<table width="100%">
+<tr>
+<th style="color:red">*{$lev_lang[m44]}{$lev_lang[mh]}</th><td id="upawardimg_box">
+<input type="file" name="awardimg" id="upawardimg" class=""><br>
+<font color="#666">{$lev_lang[m45]}{$_PLG[uploadsize]}KB</font></td>
+</tr>
+<tr id="imghor">
+<td class="sa" colspan="2" style="padding-top:0">
+{if $awardimg}
+<a href="javascript:;" id="awardimged" onclick="imghor(this, '{$awardimg}')" class="simg">
+<img src="{$awardimg}" /><em></em></a>
+{/if}
+<span id="dfimgs">
+{loop $awardimgs $r}
+{eval $imgsrc = str_replace(DISCUZ_ROOT, '', $r);}
+<a href="javascript:;" onclick="imghor(this, '{$imgsrc}')">
+<img src="{$imgsrc}" /><em></em></a>
+{/loop}
+</span>
+<span id="magicimgs" style="display:none;">
+<p>{$lev_lang[m46]}
+<a href=admin.php?action=medals target="_blank"><font color=blue>{$lev_lang[clicks]}</font></a></p>
+{loop $magics $r}
+<a href="javascript:;" onclick="imghor(this, 'static/image/magic/{$r[identifier]}.gif', '{$r[magicid]}')">
+<img src="static/image/magic/{$r[identifier]}.gif" alt="{$r[name]}" title="{$r[name]}&#10;{$r[description]}" /><em></em></a>
+{/loop}
+</span>
+<span id="medalimgs" style="display:none;">
+<p>{$lev_lang[m47]}
+<a href=admin.php?action=medals target="_blank"><font color=blue>{$lev_lang[clicks]}</font></a></p>
+{loop $medals $r}
+<a href="javascript:;" onclick="imghor(this, 'static/image/common/{$r[image]}', '{$r[medalid]}')">
+<img src="static/image/common/{$r[image]}" alt="{$r[name]}" 
+	title="{$r[name]}&#10;{$r[description]}" style="width:auto;height:auto;"/><em></em></a>
+{/loop}
+</span>
+<input type="hidden" name="info[awardimg]" id="awardimg" value="{$awardimg}"/>
+<input type="hidden" name="info[awardids]" id="awardids" value="{$awardids}"/>
+</td>
+</tr>
+</table>
+</div>
+
+<div id="ccc_ccc_ccc">
+<div class="rfm" id="scoretype_box" style="display:none;">
+<table width="100%">
+<tr>
+<th style="color:red">*{$lev_lang[m48]}{$lev_lang[mh]}</th><td>
+<select name="info[scoretype]" id="scoretype" style="width:220px">
+{loop $_G[setting][extcredits] $k $v}
+<option value="{$k}">{$v[title]}</option>
+{/loop}
+</select>
+<script>jQuery('#scoretype').val('{$scoretype}');</script>
+</td>
+</tr>
+</table>
+</div>
+<div class="rfm">
+<table width="100%">
+<tr>
+<th style="color:red">*{$lev_lang[m49]}{$lev_lang[mh]}</th>
+<td><input type="text" value="{$awardnum}" id="awardnum" name="info[awardnum]" class="px" style="width:60px;"> 
+{$lev_lang[m410]}</td>
+</tr>
+</table>
+</div>
+<div class="rfm">
+<table width="100%">
+<tr>
+<th>{$lev_lang[m411]}{$lev_lang[mh]}</th>
+<td><input type="text" value="{$awardtotal}" id="awardtotal" name="info[awardtotal]" class="px" style="width:60px;">
+ {$lev_lang[m412]}
+</td>
+</tr>
+</table>
+</div>
+<div class="rfm">
+<table width="100%">
+<tr>
+<th>{$lev_lang[m413]}{$lev_lang[mh]}</th>
+<td><input type="text" value="{$daynum}" id="daynum" name="info[daynum]" class="px" style="width:60px;">
+ {$lev_lang[m414]}</td>
+</tr>
+</table>
+</div>
+<div class="rfm">
+<table width="100%">
+<tr>
+<th style="color:red">*{$lev_lang[m415]}{$lev_lang[mh]}</th>
+<td><input type="text" value="{$ratios}" id="ratios" name="info[ratios]" class="px" style="width:60px;">% 
+{eval echo 100/$_PLG[awardratio];}-100{$lev_lang[m416]}</td>
+</tr>
+</table>
+</div>
+<div class="rfm">
+<table width="100%">
+<tr>
+<th>{$lev_lang[m417]}{$lev_lang[mh]}</th>
+<td><input type="text" value="{$realprice}" id="realprice" name="info[realprice]" class="px" style="width:60px;"> {$lev_lang[yuan]} &raquo; 
+{$lev_lang[m418]}</td>
+</tr>
+</table>
+</div>
+<div class="rfm">
+<table width="100%">
+<tr>
+<th>{$lev_lang[m419]}{$lev_lang[mh]}</th>
+<td><textarea name="info[descs]" id="descs" style="height:60px;" class="px">{$descs}</textarea></td>
+</tr>
+</table>
+</div>
+
+{if $_G[adminid] ==1}
+
+{eval echo lev_module::ismodule2('timer', 'vhtml', array($uids, $uidstime));}
+
+<div class="rfm">
+<table width="100%">
+<tr>
+<th>{$lev_lang[m424]}{$lev_lang[mh]}</th><td width="220">
+<select multiple="multiple" name="info[usergroups][]" id="usergroups" style="width:220px;height:100px;">
+<option value="">{$lev_lang[m425]}</option>
+{loop $ugroup $r}
+<option value="{$r[groupid]}" {if $usergroups && in_array($r[groupid], $usergroups)}selected{/if}>{$r[grouptitle]}</option>
+{/loop}
+</select> 
+</td><td>
+{$lev_lang[m426]}<br>
+<font color="#999">{$lev_lang[m427]}</font></td>
+</tr>
+</table>
+</div>
+{/if}
+</div>
+<div class="rfm">
+<table width="100%">
+<tr>
+<th></th>
+<td><input type="submit" name="dosubmit" id="dosubmit" class="pn pnc" onclick="return award_submit();" value=" {$lev_lang[subt]} " /></td>
+</tr>
+</table>
+</div>
+
+<script>
+
+function imghor(obj, src, awardids) {
+	jQuery('#imghor a.simg').removeClass('simg');
+	jQuery(obj).addClass('simg');
+	jQuery('#awardimg').val(src);
+	if (awardids) {
+		jQuery('#awardids').val(awardids);
+		jQuery('#descs').val(jQuery(obj).find('img').attr('title'));
+		jQuery('#title').val(jQuery(obj).find('img').attr('alt'));
+	}
+	jQuery('#upawardimg').val('');
+}
+
+function awardtypecol(id, d) {
+	jQuery('#idcars_box').hide();
+	jQuery('#scoretype_box').hide();
+	jQuery('#magicimgs').hide();
+	jQuery('#medalimgs').hide();
+	jQuery('#dfimgs').show();
+	if (!d) {
+		jQuery('#imghor a.simg').removeClass('simg');
+		jQuery('#awardimg').val('');
+	}
+	if (id ==7) {
+		jQuery('#title').val('{$lev_lang[awardtype7]}');
+		jQuery('#ccc_ccc_ccc').hide();
+		return ;
+	}
+	jQuery('#ccc_ccc_ccc').show();
+	if (id ==6) {
+		jQuery('#idcars_box').show();
+	}else if (id ==4){
+		jQuery('#scoretype_box').show();
+	}else if (id ==3) {
+		jQuery('#magicimgs').show();
+		jQuery('#dfimgs').hide();
+	}else if (id ==2) {
+		jQuery('#medalimgs').show();
+		jQuery('#dfimgs').hide();
+	}
+}
+
+function award_submit() {
+	var title = jQuery.trim(jQuery('#title').val());
+	var upawardimg = jQuery.trim(jQuery('#upawardimg').val());
+	var awardimg = jQuery.trim(jQuery('#awardimg').val());
+	var awardnum = parseInt(jQuery('#awardnum').val());
+	var ratios = jQuery('#ratios').val();
+	if (!title) {
+		art.dialog.tips('{$lev_lang[m428]}');
+		jQuery('#title').focus();
+	}else if (!upawardimg && !awardimg) {
+		art.dialog.tips('{$lev_lang[m429]}');
+	}else if (jQuery('#awardtype').val() =="7") {
+		return true;
+	}else if (isNaN(awardnum) || awardnum <=0) {
+		art.dialog.tips('{$lev_lang[m430]}');
+		jQuery('#awardnum').focus();
+	}else if (isNaN(ratios) || ratios <minratios) {
+		art.dialog.tips('{$lev_lang[m431]}');
+		jQuery('#ratios').focus();
+	}else {
+		return true;
+	}
+	return false;
+}
+
+jQuery('#title').focus();
+awardtypecol('{$awardtype}', 1);
+</script>
+
+
+
+
+
+
+
+

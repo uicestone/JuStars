@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+<meta http-equiv="Cache-control" content="{if $_G['setting']['mobile'][mobilecachetime] > 0}{$_G['setting']['mobile'][mobilecachetime]}{else}no-cache{/if}" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0;  minimum-scale=1.0; maximum-scale=2.0"/>
+<meta name="MobileOptimized" content="240"/>
+<meta name="Iphone-content" content="320"/>
+<meta name="format-detection" content="telephone=no" />
+<meta name="keywords" content="{if !empty($metakeywords)}{echo dhtmlspecialchars($metakeywords)}{/if}" />
+<meta name="description" content="{if !empty($metadescription)}{echo dhtmlspecialchars($metadescription)} {/if},$_G['setting']['bbname']" />
+<!--mobile-->
+	<!--[if lt IE 9]>     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>   <![endif]-->
+<!--mobile end-->
+<script type="text/javascript" src="static/js/common.js?yij"></script>
+<link href="data/cache/style_1_common.css?TPv" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+var STYLEID = '1', STATICURL = 'static/', IMGDIR = 'static/image/common', 
+	disallowfloat = 'newthread', SITEURL = '{$_G[siteurl]}';</script>
+</head>
+<body><div id="append_parent"></div>
+{eval include template($PLNAME.':js');}
+
+<div id="islevawardloading" style="width:560px;">
+{$lev_lang[loading]}
+<script>
+	jQuery.get('{$PLURL}:award&doingid={$doingid}&in_mobile=2&'+ Math.random(), {hook:1, pg:1}, function(data){
+		jQuery('#islevawardloading').html(data);
+	})
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+
+
+
+<tbody id="setaward" style="border-bottom:1px solid #F1F1F1">
+<tr style="cursor:pointer">
+<td width="20"><input type="checkbox" id="awards" onclick="levckall(this.id)" title="{$lev_lang[allslt]}"/></td>
+<td>{$lev_lang[myadd4]}</td>
+<td>{$lev_lang[m40]}</td>
+<td>{$lev_lang[m415]}</td>
+<td>{$lev_lang[m436]}</td>
+</tr>
+
+<tr><th></th><td>
+<a href="plugin.php?id=levaward:member&m=4&t=1#pro_nav" style="color:blue" target="_blank">{$lev_lang[addl2l]}</a>
+</td></tr>
+
+{eval $_awards = unserialize($awards);}
+{eval include template($PLNAME.':setaward_list');}
+
+</tbody>
+
+
+
+

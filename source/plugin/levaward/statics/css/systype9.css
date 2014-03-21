@@ -1,0 +1,575 @@
+
+.detail-status {
+	color: #676767;
+	margin-left: -7px;
+	text-align: center;
+	width: 458px;
+}
+
+.detail-status .main-box {
+	height: 300px;
+	margin-left: 5px;
+	padding: 6px 3px 0;
+	position: relative;
+	width: 452px;
+}
+
+.detail-status .main-box .name-box {
+	margin-bottom: 3px;
+	max-height: 54px;
+	overflow: hidden;
+}
+
+.detail-status .main-box .benefit {
+	background: none repeat scroll 0 0 #EF8D00;
+	border-radius: 4px;
+	color: #FFFFFF;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 18px;
+	margin-right: 6px;
+	margin-top: 3px;
+	padding: 2px 6px;
+}
+
+.detail-status .main-box .name {
+	color: #333333;
+	font-size: 18px;
+	font-weight: 400;
+	letter-spacing: 0.5px;
+	line-height: 26px;
+	margin-bottom: 6px;
+	text-align: left;
+	word-break: break-all;
+}
+
+.detail-status .main-box .description {
+	background-color: #FFFDF5;
+	border: 1px dashed #FFE6CB;
+	color: #482A00;
+	font-size: 14px;
+	letter-spacing: 0.5px;
+	line-height: 20px;
+	padding: 5px 8px;
+	position: relative;
+	text-align: left;
+}
+
+.detail-status .main-box .remind-sum {
+	color: #E5F6FF;
+	display: none;
+	font-size: 12px;
+	line-height: 12px;
+	position: absolute;
+	right: 36px;
+	top: 7px;
+	width: 111px;
+}
+
+.detail-status .main-box .tip {
+	background-color: #FFFFE2;
+	border: 1px solid #FFC674;
+	bottom: 56px;
+	display: none;
+	font: 400 12px/ 1.5em Arial, "????";
+	left: 210px;
+	padding: 5px 10px;
+	position: absolute;
+	text-align: left;
+	width: 215px;
+	z-index: 100;
+}
+
+.detail-status .main-box .tip b {
+	background-position: -443px -882px;
+	display: block;
+	font-size: 0;
+	height: 5px;
+	left: 5px;
+	position: absolute;
+	top: 5px;
+	width: 7px;
+}
+
+.detail-status .main-box .tip-multicity {
+	bottom: auto;
+	color: #676767;
+	left: 0;
+	max-width: 400px;
+	top: 30px;
+	width: auto;
+}
+
+.detail-status .main-box .tip-multicity s {
+	background-position: -245px -242px;
+	bottom: auto;
+	left: 39px;
+	top: -5px;
+}
+
+.detail-status .main-box .hidden {
+	display: none;
+}
+
+.detail-status .main-box .multi-city {
+	display: inline;
+}
+
+.detail-status .main-box .multi-city:hover .tip-multicity {
+	display: block;
+}
+
+.detail-status .main-box .status-banner {
+	display: block;
+	height: 70px;
+	line-height: 70px;
+	margin-left: -8px;
+	margin-top: 10px;
+	position: relative;
+	width: 482px;
+}
+
+.detail-status .main-box .status-banner:hover {
+	text-decoration: none;
+}
+
+.detail-status .main-box .status-banner .currentPrice {
+	color: #FFFFFF;
+	font-family: Arial;
+	font-size: 42px;
+	font-weight: 700;
+	height: 70px;
+	line-height: 76px;
+	margin-left: 10px;
+	margin-right: 0;
+	text-align: center;
+	width: 230px;
+}
+
+.detail-status .main-box .status-banner .currentPrice small {
+	font-size: 32px;
+}
+
+.detail-status .main-box .status-banner .floatleft {
+	height: 70px;
+	overflow: hidden;
+}
+
+.detail-status .main-box .status-banner .discount {
+	font-size: 18px;
+	font-weight: 700;
+	height: 25px;
+	line-height: 25px;
+	padding-left: 5px;
+	position: relative;
+	text-align: center;
+	top: 12px;
+	width: 57px;
+}
+
+.detail-status .main-box .status-banner .discount small {
+	font-size: 14px;
+	margin-left: 2px;
+}
+
+.detail-status .main-box .status-banner .sicon {
+	line-height: 22px;
+}
+
+.detail-status .main-box .status-banner .sicon small {
+	font-size: 13px;
+	letter-spacing: -1px;
+	margin-left: 7px;
+}
+
+.detail-status .main-box .status-banner .originPrice {
+	color: #FFFFFF;
+	font-size: 16px;
+	margin-right: 0;
+	position: relative;
+	top: -7px;
+}
+
+.detail-status .main-box .status-banner .buy {
+	background: url("../img/buy.png") no-repeat scroll center center
+		;
+	color: #980B22;
+	font-size: 20px;
+	width: 110px;
+}
+
+.detail-status .main-box .status-banner:hover .buy {
+	position: relative;
+	top: -1px;
+}
+
+.detail-status .main-box .status-banner:hover .notice-wrapper div {
+	top: 1px;
+}
+
+.detail-status .main-box .status-banner .notice-wrapper {
+	position: relative;
+}
+
+.detail-status .main-box .status-banner .notice-wrapper p {
+	color: #E5F6FF;
+	font-size: 14px;
+	line-height: 14px;
+	position: relative;
+	top: 12px;
+}
+
+.detail-status .main-box .status-banner .notice-wrapper div {
+	background:
+		url("http://img03.taobaocdn.com/tps/i3/T1qzlbXvdjXXaTyyw5-110-30.png")
+		no-repeat scroll center center;
+	color: #980B22;
+	display: inline-block;
+	font-size: 18px;
+	height: 29px;
+	line-height: 29px;
+	position: relative;
+	top: 2px;
+	width: 110px;
+}
+
+.detail-status .main-box .status-banner:hover .tip {
+	display: block;
+}
+
+.detail-status .main-box .status-banner:hover .hidden {
+	display: none;
+}
+
+.detail-status .main-box .dantong .label {
+	color: #FFFFFF;
+	left: 40px;
+	line-height: 18px;
+	position: absolute;
+	top: 0;
+}
+
+.detail-status .main-box .dantong .currentPrice {
+	height: 60px;
+	margin-top: 6px;
+}
+
+.detail-status .main-box .time-banner {
+	font-size: 12px;
+	height: 42px;
+	line-height: 42px;
+	margin-left: -8px;
+	position: relative;
+	width: 469px;
+}
+
+.detail-status .main-box .time-banner .clock {
+	background: url("../img/tun.png") no-repeat scroll -525px
+		-1245px;
+	display: inline-block;
+	height: 24px;
+	margin-right: 4px;
+	position: relative;
+	top: 4px;
+	width: 26px;
+}
+
+.detail-status .main-box .time-banner .ju-spltimer {
+	background: url("../img/zhong.png") no-repeat scroll left;
+	display: inline-block;
+	padding-left: 23px;
+}
+
+.detail-status .main-box .time-banner .day,
+.detail-status .main-box .time-banner .hour,
+.detail-status .main-box .time-banner .min,
+.detail-status .main-box .time-banner .sec
+	{
+	color: #535353;
+	font-size: 18px;
+	margin: 0 4px;
+}
+
+.detail-status .main-box .numOfPeople {
+	font-size: 14px;
+	height: 54px;
+	line-height: 54px;
+}
+
+.detail-status .main-box .numOfPeople .num {
+	color: #D51938;
+	font-family: Arial;
+	font-size: 20px;
+	font-weight: 700;
+	margin-right: 4px;
+}
+
+.detail-status .main-box .sold,.detail-status .main-box .numSold,.detail-status .main-box .out
+	{
+	color: #FFFFFF;
+}
+
+.detail-status .main-box .sold {
+	font-size: 14px;
+	margin-left: 48px;
+}
+
+.detail-status .main-box .numSold {
+	font-family: Arial;
+	font-size: 26px;
+	margin-right: 46px;
+}
+
+.detail-status .main-box .out {
+	font-size: 20px;
+}
+
+.detail-status .main-box .chanceLeft {
+	color: #E5F6FF;
+	font-size: 20px;
+	margin-left: 20px;
+}
+
+.detail-status .main-box .buyaction {
+	background: url("../img/tun.png") no-repeat scroll 335px -389px;
+	border: 0 none;
+	color: ;
+	cursor: pointer;
+	display: block;
+	font-size: 0;
+	height: 68px;
+	left: 0;
+	line-height: 0;
+	position: absolute;
+	text-indent: -999px;
+	top: 1px;
+	width: 470px;
+}
+
+.detail-status .main-box .order-info {
+	display: none;
+	top: 72px;
+}
+
+.detail-status .avil .status-banner {
+	background: url("../img/tun.png") no-repeat;
+}
+
+.detail-status .avil .status-banner .discount {
+	background: url("../img/ttt.png") no-repeat;
+	color: #D21E3C;
+}
+
+.detail-status .avil .buyaction:hover {
+	background-position: 335px -1229px;
+}
+
+.detail-status .avil .time-banner {
+	background: none repeat scroll 0 0 #FFF4F6;
+}
+
+.detail-status .avil .prepay {
+	background-position: 332px -1108px;
+}
+
+.detail-status .avil .prepay:hover {
+	background-position: 332px -1108px;
+}
+
+.detail-status .unavil {
+	height: auto;
+	position: relative;
+	width: 500px;
+}
+
+.detail-status .unavil .status-banner {
+	background: url("../img/tun.png") no-repeat scroll 0 -299px
+		!important;
+	left: 3px;
+	position: absolute;
+	top: 183px;
+	width: 543px;
+}
+
+.detail-status .unavil .buyaction {
+	background-position: 331px -621px;
+	cursor: default;
+}
+
+.detail-status .unavil .sold .num {
+	font-size: 18px;
+}
+
+.detail-status .unavil .out {
+	margin-right: 36px;
+}
+
+.detail-status .tm-point .status-banner .currentPrice small {
+	display: none;
+}
+
+.detail-status .tm-point .tm-icon {
+	background:
+		url("http://gtms01.alicdn.com/tps/i1/T1UZ3_FddeXXbdU_jq-87-44.png")
+		no-repeat scroll -5px 0;
+	display: inline-block;
+	height: 58px;
+	vertical-align: middle;
+	width: 80px;
+}
+
+.detail-status .tm-point .buyaction {
+	background-position: 335px -1469px;
+}
+
+.detail-status .tm-point .buyaction:hover {
+	background-position: 335px -1468px;
+}
+
+.detail-status .blank .buyaction {
+	background-position: 1000px 1000px;
+	display: none;
+}
+
+.detail-status .notbegin .status-banner {
+	background: url("../img/tun.png") no-repeat scroll 0 -99px;
+}
+
+.detail-status .notbegin .status-banner .discount {
+	background: url("../img/ttt3.png") no-repeat scroll center
+		center;
+	color: #289A62;
+}
+
+.detail-status .notbegin .time-banner {
+	background: none repeat scroll 0 0 #F1FAFF;
+}
+
+.detail-status .notbegin .buyaction {
+	background-position: 340px -621px;
+	cursor: default;
+}
+
+.detail-status .notbegin .buyaction:hover {
+	background-position: 340px -621px;
+	cursor: default;
+}
+
+.detail-status .notbegin .hasremind .buyaction {
+	background-position: 332px -503px;
+	cursor: pointer;
+}
+
+.detail-status .notbegin .hasremind .buyaction:hover {
+	background-position: 332px -1348px;
+}
+
+.detail-status .timeout .status-banner {
+	background: url("../img/tun.png") no-repeat scroll -61px -299px;
+}
+
+.detail-status .timeout .buyaction {
+	background-position: 355px -739px;
+	cursor: default;
+}
+
+.detail-status .timeout .buyaction:hover {
+	background-position: 355px -739px;
+	cursor: default;
+}
+
+.detail-status .soldout .status-banner {
+	background: url("../img/tun.png") no-repeat scroll -61px -299px;
+}
+
+.detail-status .soldout .buyaction {
+	background-position: 355px -857px;
+	cursor: default;
+}
+
+.detail-status .soldout .buyaction:hover {
+	background-position: 355px -857px;
+	cursor: default;
+}
+
+.detail-status .chance .status-banner {
+	background: url("../img/tun.png") no-repeat scroll 0 -200px;
+}
+
+.detail-status .chance .status-banner .discount {
+	background: url("../img/ttt2.png") no-repeat scroll center
+		center;
+	color: #3683BF;
+}
+
+.detail-status .chance .time-banner {
+	background: none repeat scroll 0 0 #F1FAFF;
+}
+
+.detail-status .chance .buyaction {
+	background-position: 352px -979px;
+	cursor: default;
+}
+
+.detail-status .chance .buyaction:hover {
+	background-position: 352px -979px;
+	cursor: default;
+}
+
+.detail-status .operation {
+	border-top: 1px dashed #959595;
+	line-height: 56px;
+	margin-left: 8px;
+	position: relative;
+}
+
+.detail-status .operation a {
+	color: #676767;
+	cursor: pointer;
+}
+
+.detail-status .operation .subscribe,.detail-status .operation .share,.detail-status .operation .collect
+	{
+	display: inline-block;
+	height: 20px;
+	margin-left: 22px;
+	margin-right: 6px;
+	position: relative;
+	top: 5px;
+	width: 20px;
+}
+
+.detail-status .operation .subscribe {
+	background: url("../img/tun.png") no-repeat scroll -530px
+		-1416px;
+}
+
+.detail-status .operation .share {
+	background: url("../img/tun.png") no-repeat scroll -530px
+		-1372px;
+}
+
+.detail-status .operation .collect {
+	background: url("../img/tun.png") no-repeat scroll -530px
+		-1328px;
+}
+
+.detail-status .operation .share-box {
+	display: inline-block;
+	position: relative;
+}
+
+.detail-status .operation .share-box i {
+	background: url("../img/tun.png") no-repeat scroll -539px
+		-1298px;
+	display: inline-block;
+	font-size: 0;
+	height: 10px;
+	line-height: 0;
+	text-indent: -10000px;
+	vertical-align: middle;
+	width: 10px;
+}
+.detail-status .floatleft {float:left}
+
+.detail-status .J_juItemTimer b {color:#CC0000;font-size:14px;}

@@ -1,0 +1,122 @@
+
+
+<ul id="pro_nav" class="tb cl">
+<li id="top_nav_0"><a href="{$PLURL}:member&m={$m}&t=0&doingid={$doingid}&index={$index}">{$lev_lang[m50]}</a></li>
+<li id="top_nav_1"><a href="{$PLURL}:member&m={$m}&t=1&doingid={$doingid}&index={$index}">{$lev_lang[m51]}</a></li>
+<li id="top_nav_2"><a href="{$PLURL}:member&m={$m}&t=2&doingid={$doingid}&index={$index}">{$lev_lang[m52]}</a></li>
+</ul>
+<script type="text/javascript">
+jQuery('#top_nav_{$t}').addClass('a');
+</script>
+
+<div class="rfm">
+<table width="100%">
+<tr>
+<td>
+{if $mydoing[lists]}
+<select id="sltdoing" onchange="isdoingreg(this.value)">
+{loop $mydoing[lists] $r}
+<option value="{$r[id]}" {if $r[id] ==$doingid}selected{/if}>{$r[title]}</option>
+{/loop}
+</select>
+<input type="text" class="px" value="{$srhkey}" id="srhkey" onfocus="this.value=''"/>
+<input type="button" class="pn pnc" value=" {$lev_lang[srh]}" onclick="isdoingreg()"/>
+{/if}
+</td>
+<td align="right"><a href="{$PLURL}:member&srhkey={$doingid}">{$lev_lang[m53]}</a></td>
+</tr>
+</table>
+</div>
+{if $t}
+
+{eval include template($PLNAME.':member_'.$m.'_'.$t);}
+
+{else}
+
+<div class="rfm">
+<table width="100%">
+<tr>
+<td width="110">{$lev_lang[m56]}</td>
+<td width="110">{$lev_lang[m55]}</td>
+<td width="110">{$lev_lang[m54]}</td>
+<td width="110">{$lev_lang[tdnuml]}</td>
+<td>{$lev_lang[gtbk]}</td>
+<td align="right" width="120">{$lev_lang[manageo]}</td>
+</tr>
+</table>
+</div>
+{if $lists[lists]}
+{loop $lists[lists] $r}
+<div id="rfm_{$r[id]}">
+<div class="rfm">
+<table width="100%">
+<tbody>
+<tr>
+<td width="110"><a href="home.php?mod=space&uid={$r[uid]}" target="_blank">{$r[bbsname]}</a></td>
+<td width="110"><input type="text" class="px" style="width:55px" id="awardnum_{$r[id]}" value="{$r[awardnum]}"
+onchange="setoptionsreg(this, '{$r[id]}', 'awardnum')"></td>
+<td width="110">{$r[allnum]}</td>
+<td width="110">{if $r[ymd] ==date('Ymd', TIMESTAMP)}{$r[tdnum]}{else}0{/if}</td>
+<td>{$r[contents]}</td>
+<td align="right" width="120px">
+	<a href="javascript:;" onclick="setoptionsreg(this, '{$r[id]}', 'isjoin')" value="0">{$lev_lang[del]}</a>
+	</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+{/loop}
+<div class="rfm">
+<table width="100%">
+<tr>
+<td></td>
+<td>{$lists[pages]}</td>
+</tr>
+</table>
+</div>
+{else}
+<div class="rfm">{$lev_lang[nodata]}</div>
+{/if}
+
+{/if}
+
+<script>
+
+function isdoingreg(val) {
+	if (val) {
+		var index = jQuery('#sltdoing').find('option:selected').index();
+		window.location = '{$PLURL}:member&m=5&t={$t}&doingid='+ val +'&index='+ index;
+	}else {
+		val = jQuery.trim(jQuery('#srhkey').val());
+		if (val !='{$srhkey}') {
+			window.location = '{$PLURL}:member&m=5&t={$t}&srhkey='+ val;
+		}else {
+			art.dialog.tips('{$lev_lang[srhtips]}');
+		}
+	}
+}
+
+function setoptionsreg(obj, id, name) {
+	jQuery.get('{$remote}_setoptionsreg.'+ id +'.'+ name, {val:obj.value, _t:Math.random()}, function(data) {
+		if (data =="1") {
+			art.dialog.tips('{$lev_lang[succeed]}');
+		}else {
+			art.dialog.tips('{$lev_lang[error]}{$lev_lang[noact]}'+ data);
+		}
+	});
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

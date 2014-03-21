@@ -1,0 +1,22 @@
+
+{if $rs[regscore]}
+<div class="rfm" style="width:400px;">
+<table><tr>
+<td><font color=red><b>{$rs[regscore]}</b> {$lang[extscore]}/{$lang[ci]}</font></td>
+<th style="width:40px;">{$lang[buyawardl]}{$lang[mh]}</th>
+<td>
+<input type="text" name="buynum" id="buynum" value="1" class="px" style="width:40px"/> {$lang[ci]}
+</td>
+<td><input type="button" value=" {$lang[subt]} " class="pn pnc" onclick="isbuyaward()"></td>
+
+</tr></table>
+</div>
+{/if}
+
+{$taskstatus}
+
+
+
+
+
+

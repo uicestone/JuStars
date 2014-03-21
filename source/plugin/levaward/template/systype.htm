@@ -1,0 +1,22 @@
+
+
+{loop $_systype $k $r}
+
+<tbody id="systype_{$k}" class="systypes">
+
+{eval echo lev_module::ismodule2('systype_field', 'init', array('id'=>$k, 'info'=>$xml));}
+
+{if is_file(DISCUZ_ROOT.lev_base::$diydir.'systype_field_'.$k.'.htm')}
+{eval include template($PLNAME.":systype_field_".$k);}
+{/if}
+
+</tbody>
+
+{/loop}
+
+
+
+
+
+
+

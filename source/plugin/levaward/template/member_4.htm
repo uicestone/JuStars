@@ -1,0 +1,52 @@
+
+
+<ul id="pro_nav" class="tb cl">
+<li id="top_nav_0"><a href="{$PLURL}:member&m={$m}&t=0">{$lev_lang[m433]}</a></li>
+<li id="top_nav_1"><a href="{$PLURL}:member&m={$m}&t=1#pro_nav">{$lev_lang[m434]}</a></li>
+</ul>
+<script type="text/javascript">
+jQuery('#top_nav_{$t}').addClass('a');
+var minratios = {eval echo $_G[adminid]==1 ? 0 : 100/$_PLG[awardratio]};
+</script>
+
+{eval include template($PLNAME.':member_4_'.$t);}
+
+
+<script>
+
+function setoptions(obj, id, name) {
+	if (name =='ratios') {
+		{if $_G['adminid'] !=1}
+		if (obj.value < minratios) {
+			art.dialog.tips('{$lev_lang[m441]}'+ minratios +'%');
+			return false;
+		}
+		{/if}
+	}else if ((name =='daynum' || name =='awardtotal') && isNaN(obj.value)) {
+		obj.value = '{$lev_lang[wuxian]}';
+	}else if (name =='awardnum' && (isNaN(obj.value) || !parseInt(obj.value))) {
+		art.dialog.tips('{$lev_lang[m442]}');
+		return false;
+	}
+	jQuery.get('{$remote}_setoptions.'+ id +'.'+ name, {val:obj.value, _t:Math.random()}, function(data) {
+		if (data =="1") {
+			art.dialog.tips('{$lev_lang[succeed]}');
+		}else {
+			art.dialog.tips('{$lev_lang[error]}{$lev_lang[noact]}'+ data);
+		}
+	});
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

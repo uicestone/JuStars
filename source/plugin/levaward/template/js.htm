@@ -1,0 +1,76 @@
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	
+<link rel="stylesheet" href="{$PLSTATIC}css/css.css" type="text/css">
+<script type="text/javascript" src="{$PLSTATIC}dialog417/dialog.js?skin=default"></script>
+<script type="text/javascript" src="{$PLSTATIC}dialog417/plugins/iframeTools.js"></script>
+<script type="text/javascript" src="{$PLSTATIC}jquery.min.js"></script>
+<script type="text/javascript" src="{$PLSTATIC}jquery.lazyload.js"></script>
+
+<script type="text/javascript">
+
+var $$ = jQuery.noConflict();
+
+function levckall(id) {
+	if (jQuery("#"+ id).attr("checked")) {
+		jQuery("input[name='"+ id +"[]']").attr('checked', true);
+	} else {
+		jQuery("input[name='"+ id +"[]']").attr('checked', false);
+	}
+}
+
+function levtimer(seconds, timerid, types, endtips) {
+	if (isNaN(seconds) || seconds <=1 || !document.getElementById(timerid)) {
+		if (!endtips) endtips = '00 : 00 : 00';
+		if (document.getElementById(timerid)) document.getElementById(timerid).innerHTML = endtips;
+	}else {
+		seconds--;
+		var _dd = _hh = _mm = _ss = 0;
+		switch (types) {
+			case 1 :
+				_dd = parseInt(seconds / (3600 * 24));
+				_hh = parseInt(seconds % (3600 * 24) / 3600);
+				_mm = parseInt(seconds % (3600 * 24) % 3600 / 60);
+				_ss = seconds % (3600 * 24) % 3600 % 60; 
+				_tt = _dd +' {$lev_lang[d]} '+ _hh +' {$lev_lang[h]} '+ _mm +' {$lev_lang[i]} '+ _ss +' {$lev_lang[s]}';
+				break;
+			case 2 :
+				_hh = parseInt(seconds / 3600);
+				_mm = parseInt(seconds % 3600 / 60);
+				_ss = seconds % 3600 % 60; 
+				_tt = _hh +' {$lev_lang[h]} '+ _mm +' {$lev_lang[i]} '+ _ss +' {$lev_lang[s]}';
+				break;
+			case 3 :
+				_mm = parseInt(seconds / 60);
+				_ss = seconds % 60 % 60; 
+				_tt = _mm +' {$lev_lang[i]} '+ _ss +' {$lev_lang[s]}';
+				break;
+			case 4 :
+				_mm = parseInt(seconds / 60);
+				_ss = seconds % 60 % 60; 
+				_tt = _mm +' : '+ _ss;
+				break;
+			default:
+				_hh = parseInt(seconds / 3600);
+				_mm = parseInt(seconds % 3600 / 60);
+				_ss = seconds % 3600 % 60; 
+				_tt = _hh +' : '+ _mm +' : '+ _ss;
+				break;
+		}
+		_vv = _tt.replace(/\b(\w)\b/g, '0$1');
+		setTimeout(function(){levtimer(seconds, timerid, types, endtips)}, 1000);
+		document.getElementById(timerid).innerHTML = _vv;
+	}
+}
+
+jQuery('img').lazyload({ threshold : 200 }); 
+</script>
+
+<!--<div class="bm cl" id="pt">
+<div class="z">
+<a class="nvhm" href="./">{$_G['setting']['bbname']}</a>
+<em>&raquo;</em><a href="forum.php">{$_G['setting']['bbname']}</a>
+<em>&raquo;</em> <a href="{$PLURL}:{$PLNAME}">{$navtitle}</a> <em>&raquo;</em> {$menuname}
+</div>
+<div class="z"></div>
+</div>-->

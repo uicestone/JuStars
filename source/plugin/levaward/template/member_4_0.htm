@@ -1,0 +1,111 @@
+
+<div class="rfm">
+<table width="100%">
+<tr>
+<td>
+<input type="text" class="px" value="{$srhkey}" id="srhkey" onfocus="this.value=''"/>
+<input type="button" class="pn pnc" value=" {$lev_lang[srh]} " onclick="srhdoing()"/>
+</td>
+</tr>
+</table>
+<script>
+function srhdoing(val) {
+	val = val ? val : jQuery.trim(jQuery('#srhkey').val());
+	if (val !='{$srhkey}') {
+		window.location = '{$PLURL}:member&m={$m}&awardid={$awardid}&srhkey='+ val;
+	}else {
+		art.dialog.tips('{$lev_lang[srhtips]}');
+	}
+}
+</script>
+</div>
+
+<div class="rfm">
+<table width="100%">
+<tr>
+<td width="40">{$lev_lang[orders]}</td>
+<td width="70">{$lev_lang[myadd4]}</td>
+<td width="200">{$lev_lang[myadd5]}</td>
+<td>{$lev_lang[m432]}</td>
+{if $_G[adminid] ==1}<td width="100">{$lev_lang[m424]}</td>{/if}
+<td width="120" align="right">{$lev_lang[manageo]}</td>
+</tr>
+</table>
+</div>
+{loop $lists[lists] $r}
+<div id="rfm_{$r[id]}">
+<div class="rfm">
+<table width="100%" class="tles">
+<tr>
+<td width="130">{if $r[awardtype]!=7}
+{$lev_lang[m415]}<input type="text" class="px" style="width:55px" id="ratios_{$r[id]}" value="{$r[ratios]}"
+onchange="setoptions(this, '{$r[id]}', 'ratios')">%</td>
+<td width="130">{$lev_lang[m436]}
+<input type="text" class="px" style="width:55px" id="awardtotal_{$r[id]}" 
+value="{if !$r[awardtotal]}{$lev_lang[wuxian]}{else}{eval echo $kcu = $r[awardtotal]-$r[totals]}{/if}"
+onchange="setoptions(this, '{$r[id]}', 'awardtotal')"></td>
+<td width="130">{if $_G[adminid] ==1}
+{$lev_lang[m435]}
+<input type="text" class="px" style="width:55px" id="awardtotal_{$r[id]}" 
+value="{eval $ncu = lev_class::getdaynum($r);}{if $ncu ===TRUE}{$lev_lang[wuxian]}{else}{$ncu}{/if}"
+onchange="setoptions(this, '{$r[id]}', 'daynum')">
+{/if}</td>
+<td align="right">
+{$lev_lang[m437]}{$lev_lang[mh]}{eval echo lev_class::ymdinfo($r);} 
+{$lev_lang[m438]}{$lev_lang[mh]}{eval echo lev_class::ymdinfo($r, 1);} 
+{$lev_lang[m439]}{$lev_lang[mh]}{$r[totals]} 
+</td>{/if}
+</tr>
+</table>
+</div>
+<div class="rfm">
+<table width="100%">
+<tbody>
+<tr>
+<td width="40"><input type="text" class="px" name="listorder[{$r[id]}]" value="{$r[listorder]}"
+style="width:40px;padding:0;text-align:center;" ></td>
+<td width="70" title="{$r[descs]}"><img src="{$r[awardimg]}" width="65" height="65"/></td>
+<td width="200" style="padding:4px 2px;">{$r[title]}
+{if $_G[adminid] ==1}
+<br><a href="javascript:;" onclick="srhdoing('uid_{$r[uid]}')">{$r[bbsname]}</a>
+{/if}
+</td>
+<td>{$lev_lang['awardtype'.$r[awardtype]]}
+{if $r[awardtype] !=7}
+<br>{if $r[awardtype] ==4}{$_G[setting][extcredits][$r[scoretype]][title]}{/if}{$lev_lang[m440]} +
+<br><input type="text" class="px" style="width:55px" id="awardnum_{$r[id]}" value="{$r[awardnum]}"
+onchange="setoptions(this, '{$r[id]}', 'awardnum')"></td>
+{if $_G[adminid] ==1}
+<td width="100">
+{eval $usergroups = unserialize($r[usergroups]);$_groups = '';}
+{loop $usergroups $v}
+{eval $_groups .= $ugroup[$v]['grouptitle'].'&#10;';} 
+{/loop}
+{if !$_groups}{eval $_groups = $lev_lang[all];}{/if}
+<p style="height:65px;width:100px;overflow:hidden;" 
+title="{$lev_lang[m420]}{$r[uids]}&#10;{$lev_lang[m424]}&#10;{$_groups}"
+>{eval echo cutstr($_groups, 65);}</p>
+{/if}
+</td>
+{/if}
+
+<td align="right" width="120px">
+	<a href="{$PLURL}:member&m=4&t=1&edtid={$r['id']}">{$lev_lang[edit]}</a> | 
+	<a href="javascript:;" onclick="deldoings(this, '{$r[id]}', 1)">{$lev_lang[del]}</a>
+	</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+{/loop}
+
+<div class="rfm">
+<table width="100%">
+<tr>
+<td><input type="submit" name="dolistorder" value=" {$lev_lang[orders]} " class="pn pnc"
+onclick="myform.action='{$remote}_listorder'"></td>
+<td>{$lists[pages]}</td>
+</tr>
+</table>
+</div>

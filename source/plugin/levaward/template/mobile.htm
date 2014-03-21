@@ -1,0 +1,27 @@
+{subtemplate common/header}
+
+{eval include template($PLNAME.':js');}
+
+<style id="diy_style" type="text/css"></style>
+<div style="width:100%;" id="levaward">
+<div style="width:960px;margin:auto;overflow:hidden;background:#fff;">
+
+<div class="levaward levaext">
+<!--[diy=diy16]--><div id="diy16" class="area"></div><!--[/diy]-->
+</div>
+
+<div id="islevawardloading" class="levaward levaext">
+{$lev_lang[loading]}
+<script>
+	jQuery.get('{$PLURL}:award&doingid={$doingid}&'+ Math.random(), {hook:1, pg:1}, function(data){
+		jQuery('#islevawardloading').html(data);
+	})
+</script>
+</div>
+
+<div class="levaward levaext">
+<!--[diy=diy17]--><div id="diy17" class="area"></div><!--[/diy]-->
+</div>
+
+</div></div>
+{subtemplate common/footer}

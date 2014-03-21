@@ -1,0 +1,114 @@
+
+<div class="rfm">
+<table width="100%">
+<tr>
+<td width="15" style="vertical-align:middle">
+<input type="checkbox" value="{$r[id]}" id="chkall" title="{$lev_lang[allslt]}" 
+onclick="levckall(this.id)" class="levchkall"></td>
+<td width="80">{$lev_lang[m56]}</td>
+<td>{$lev_lang[m57]}</td>
+<td width="110">{$lev_lang[m58]}</td>
+<td align="right" width="110">{$lev_lang[m59]}</td>
+</tr>
+</table>
+</div>
+{if $lists[lists]}
+{loop $lists[lists] $r}
+<div id="rfm_{$r[id]}">
+<div class="rfm">
+<table width="100%">
+<tbody>
+<tr>
+<td width="15" style="vertical-align:middle;padding:0 2px;">
+<input type="checkbox" name="chkall[]" value="{$r[id]}" class="levchkall"></td>
+<td width="80"><a href="home.php?mod=space&uid={$r[uid]}" target="_blank">{$r[bbsname]}</a></td>
+<td><a href="{$PLURL}:member&m=4&awardid={$r[doingid]}#rfm_{$r[awardid]}">{$r[title]}</a> {$r[descs]}</td>
+<td width="110">{eval echo dgmdate($r[addtime], 'u');}</td>
+<td align="right" width="110px">
+<a href="javascript:;" onclick="mybaseinfo('{$r[uid]}', '{$doingid}')">{$lev_lang[m4126]}</a> | 
+{if $r[status] ==4}
+	<font color=green>{$lev_lang[status4]}</font>
+{elseif $r[status] ==5}
+	<font color=green>{$lev_lang[status5]}</font>
+{elseif $r[status]}
+	<a href="javascript:;" onclick="setstatusaward(this, '{$r[id]}', 'status')" value="0">
+	{if $r[status] ==2}<font color=red>{$lev_lang[status2]}</font>
+	{elseif $r[status] ==1}<font color=blue>{$lev_lang[status1]}</font>
+	{elseif $r[status] ==3}<font color=orange>{$lev_lang[status3]}</font>{/if}</a>
+{else}
+	<font color=green>{$lev_lang[status0]}</font>
+{/if}
+	</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+{/loop}
+<div class="rfm">
+<table width="100%">
+<tr>
+{if $_G[adminid] ==1}
+<td><label for="chkall">{$lev_lang[allslt]}</label> 
+<input type="submit" name="dodel" value=" {$lev_lang[del]} " class="pn pnc"
+onclick="myform.action='{$remote}_delawardlog'"></td>
+{/if}
+<td>{$lists[pages]}</td>
+</tr>
+</table>
+</div>
+{else}
+<div class="rfm">{$lev_lang[nodata]}</div>
+{/if}
+
+
+<script>
+
+function mybaseinfo(uid, doingid) {
+
+	jQuery.get('{$lm}_getbase._init.'+ uid, {doingid:doingid}, function(data){
+		art.dialog({id:'mybase', content:data, ok:true});
+	});
+}
+
+function setstatusaward(obj, opid, name) {
+	jQuery.get('{$lm}_setstatusaward', {opid:opid, name:name, _t:Math.random()}, function(data) {
+		var status = parseInt(data);
+		if (status <0 || isNaN(status)) {
+			art.dialog.tips('$lev_lang[noact]'+ status);
+			return '';
+		}
+		switch(status) {
+		case 1 :
+			jQuery(obj).html('<font color=blue>{$lev_lang[status1]}</font>');
+			break;
+		case 2 :
+			jQuery(obj).html('<font color=red>{$lev_lang[status2]}</font>');
+			break;
+		case 3 :
+			jQuery(obj).html('<font color=orange>{$lev_lang[status3]}</font>');
+			break;
+		case 4 :
+			jQuery(obj).html('<font color=green>{$lev_lang[status4]}</font>');
+			break;
+		case 5 :
+			jQuery(obj).html('<font color=green>{$lev_lang[status5]}</font>');
+			break;
+		default:
+			jQuery(obj).html('<font color=green>{$lev_lang[status0]}</font>');
+			break;
+		}
+		art.dialog.tips('$lev_lang[succeed]');
+	});
+}
+</script>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,306 @@
+
+<script type="text/javascript">
+
+var _uid = parseInt('{$_G[uid]}');
+var _ispop = 0;
+var commontips = '{$lev_lang[error]}{$lev_lang[dready]}';
+
+getmyawardnums();
+function getmyawardnums() {
+	jQuery.get('{$remote}_awardnum.{$doingid}&'+ Math.random(), {}, function(data){
+		var num = parseInt(data);
+		if (loginwin(data)) {
+			if (num >0) {
+				jQuery('#lev_lottery_num').html(data);
+			}else if (num =='-3' || num =='-4') {
+				regdoings('{$doingid}', '{$doings[title]}');
+			}else {
+				art.dialog.tips('{$lev_lang[lotip]}'+ data);
+				if ('{$doings[systype]}' =='9') return false;
+				buyaward();
+			}
+		}
+		art.dialog({id:'levtips'}).close();
+	});
+}
+
+function buyaward() {
+	art.dialog({id:'buyaward', content:'{$lev_lang[loading]}', title:false, fixed:true});
+	jQuery.get('{$remote}_buyaward.{$doingid}.1', {_t:Math.random()}, function(data) {
+		art.dialog({id:'buyaward'}).close();
+		if (loginwin(data) && jQuery.trim(data)) {
+			art.dialog({id:'buyaward', title:'{$lev_lang[awardl1]}', content:data, fixed:true, cancel:true, padding:'0 20px 10px'});
+		}else {
+			art.dialog.tips('{$lev_lang[awardl2]}');
+		}
+	});
+}
+function isbuyaward() {
+	var buynum = parseInt(jQuery('#buynum').val());//alert(buynum);
+	if (isNaN(buynum) || buynum <1) {
+		art.dialog.tips('{$lev_lang[awardl3]}');
+		return false;
+	}
+	art.dialog({id:'buyaward'}).close();
+	jQuery.get('{$remote}_buyaward.{$doingid}', {buynum:buynum, _t:Math.random()}, function(data){
+		result = parseInt(data);
+		if (result =="1") {
+			_ispop = 0;
+			art.dialog.tips('{$lev_lang[succeed]}');
+			var mynum = parseInt(jQuery('#lev_lottery_num').text());
+			jQuery('#lev_lottery_num').html(buynum + mynum);
+		}else {
+			switch (result) {
+				case -8 :
+					art.dialog.tips('{$lev_lang[error]}{$lev_lang[noscore]}<a href="{$_PLG[buyscoreurl]}" target="_blank" style="color:blue">{$lev_lang[clicks]}</a>', 15);
+					break;
+				case -9 :
+					art.dialog.tips('{$lev_lang[error]}{$lev_lang[noact]}'+ data);
+					break;
+				default:
+					art.dialog.tips('{$lev_lang[error]}{$lev_lang[dready]}'+ data);
+					break;
+			}
+		}
+	});
+}
+
+function listenaward() {
+	art.dialog({id:'levtips', content:'{$lev_lang[loading]}', title:false, fixed:true});
+	jQuery.ajax({
+        url: 'plugin.php?id=levquick:l&m=_m._weibo_common._friends_by_id',
+		data: {taskname:'levaward', doingid:'{$doingid}', _t:Math.random()},
+		dataType: 'html',
+		type: 'get',
+        success: function(data){
+			art.dialog({id:'levtips'}).close();
+			if (parseInt(data) =="1") {
+				art.dialog.tips('{$lev_lang[awardlls]}');
+				taskaward('{$doingid}', 'share', 'listen', this);
+			}else {
+				art.dialog.tips('{$lev_lang[awardl4]}');
+			}
+		},
+		error: function(){
+			art.dialog({id:'levtips'}).close();
+			art.dialog.tips('{$lev_lang[awardl5]}');
+		}
+	});
+}
+
+function regdoings(id, title, obj) {
+	var cls = jQuery(obj).attr('class') =='joined' ? 1 : 0;
+	art.dialog({id:'regdoings', content:'{$lev_lang[loading]}', title:false, fixed:true});
+	jQuery.get('{$remote}_regdoings.'+ id, {cls:cls, _t:Math.random()}, function(data){
+		art.dialog({id:'regdoings'}).close();
+		art.dialog({id:'regdoings', content:data, lock:true, fixed:true,
+		ok:function() {
+			jQuery('#regdoings').submit();
+			return false;
+		},
+		cancel:true
+		});
+	});
+}
+
+function levmarquee(elementID, h, n, speed, delay){
+	var t = null;
+	var box = '#' + elementID;
+	jQuery(box).hover(function(){
+		clearInterval(t);
+	}, function(){
+		t = setInterval(function(){_start(box, h, n, speed)}, delay);
+	}).trigger('mouseout');
+}
+function _start(box, h, n, speed){
+	jQuery(box).children('ul:first').animate({marginTop: '-='+h}, speed, function(){
+		jQuery(this).css({marginTop:'0'}).find('li').slice(0,n).appendTo(this);
+	})
+}
+
+function myawardlog(doingid, type, page) {
+	art.dialog({id:'myawardlog'}).close();
+	art.dialog({id:'loadingtips', content:'{$lev_lang[loading]}', title:false, fixed:true});
+	if (isNaN(doingid) || !doingid) doingid = '{$doingid}';
+	jQuery.get('{$remote}_awardlog.'+ doingid, {page:page, type:type, _t:Math.random()}, function(data){
+		art.dialog({id:'loadingtips'}).close();
+		if (loginwin(data)) {
+			art.dialog({id:'myawardlog', title:'{$lev_lang[awardl6]}', content:data, fixed:true, cancel:true});
+		}
+	});
+}
+
+function loginwin(data) {
+	if (parseInt(data) =="-5" || isNaN(_uid) || _uid <=0) {
+		showWindow('login', 'member.php?mod=logging&action=login&referer='+ encodeURIComponent(window.location));
+	}else {
+		return true;
+	}
+}
+
+function awardtips(r, _func) {
+	 _ispop = 0;
+	if (r >=0) {
+		var _an = 0;
+		var _title = jQuery('#awardid_'+ r).attr('title');
+		var awardtype = jQuery('#awardid_'+ r).attr('awardtype');
+		if (awardtype && awardtype !="7") {
+			tips = '<p>{$lev_lang[isaward]} '+ _title 
+				+'</p><span>'+ isawardtips[rand_om(isawardtips.length)] +'</span>';
+		}else {
+			tips = '<p>{$lev_lang[noaward]}'+ _title + '</p><span>'+
+			noawardtips[rand_om(noawardtips.length)] +'</span>';
+		}
+		if (awardtype =="1") {
+			_an = parseInt(jQuery('#awardid_'+ r).attr('awardnum'));
+		}
+		var contents = '<div class="award_tips"><div class="awardtips_content">'+ tips +
+		'<a style="cursor:pointer;text-decoration: none;">'+
+		'<font onclick="window.location=\'home.php?mod=spacecp\'">{$lev_lang[awardl7]}</font> '+
+		'<font onclick="myawardlog()" style="color:red;">{$lev_lang[sy3]}</font></a>'+
+		'</div><a class="awardtips_btn" onclick="awardtips()"></a></div>';
+		art.dialog({id:'awardtips', title:false, content:contents, padding:0, fixed:true, width:'339px', height:'184px', 
+			close:function(){
+				if (!isNaN(_an)) {
+					var mynum = parseInt(jQuery('#lev_lottery_num').text());
+					jQuery('#lev_lottery_num').html(_an + mynum);
+				}
+				if (_func) eval(_func);
+			}
+		});
+	}else {
+		art.dialog({id:'awardtips'}).close();
+	}
+}
+
+function rand_om(len) {
+	return Math.floor(Math.random() * len);
+}
+
+function levopenaward(func, param) {
+	if (!loginwin()) return '';
+	if (!_ispop) {
+		art.dialog({id:'awardtips'}).close();
+		 _ispop = 1;
+		 jQuery.get('{$remote}_openaward.{$doingid}', {_t:Math.random()}, function(data){
+			r = parseInt(data);
+			if (r >=0) {
+				eval(func +'("'+ r +'", "'+ param +'")');
+				var lev_lottery_num = parseInt(jQuery('#lev_lottery_num').text());
+				jQuery('#lev_lottery_num').html(lev_lottery_num -1);
+			}else if (r =='-1') {
+				commontips = '{$lev_lang[lotip]}';
+				buyaward();
+				art.dialog.tips(commontips);
+			}else if (r =='-12') {
+				commontips = '{$lev_lang[awardl8]}';
+				art.dialog.tips(commontips);
+			}else if (r =='-13') {
+				commontips = '{$lev_lang[awardl9]}';
+				art.dialog.tips(commontips);
+			}else if (r =='-14') {
+				commontips = '{$lev_lang[awardl10]}';
+				art.dialog.tips(commontips);
+			}else if (r =='-3') {
+				commontips = '{$lev_lang[awardl11]}';
+				regdoings('{$doingid}', '{$doings[title]}');
+			}else if (r =='-6') {
+				commontips = '{$lev_lang[awardl12]}';
+				art.dialog.tips(commontips);
+			}else if (r =='-808') {
+				_ispop = 0;
+				art.dialog.tips('{$lev_lang[sysbusy]}'+ data);
+			}else {
+				commontips = '{$lev_lang[dready]}'+ data;
+				art.dialog.tips(commontips);
+			}
+		});
+	}else {
+		art.dialog.tips(commontips);
+	}
+}
+
+function levtimer(seconds, timerid, types, endtips) {
+	if (isNaN(seconds) || seconds <=1 || !document.getElementById(timerid)) {
+		if (!endtips) endtips = '00 : 00 : 00';
+		if (document.getElementById(timerid)) document.getElementById(timerid).innerHTML = endtips;
+	}else {
+		seconds--;
+		var _dd = _hh = _mm = _ss = 0;
+		switch (types) {
+			case 1 :
+				_dd = parseInt(seconds / (3600 * 24));
+				_hh = parseInt(seconds % (3600 * 24) / 3600);
+				_mm = parseInt(seconds % (3600 * 24) % 3600 / 60);
+				_ss = seconds % (3600 * 24) % 3600 % 60; 
+				_tt = _dd +' {$lev_lang[d]} '+ _hh +' {$lev_lang[h]} '+ _mm +' {$lev_lang[i]} '+ _ss +' {$lev_lang[s]}';
+				break;
+			case 2 :
+				_hh = parseInt(seconds / 3600);
+				_mm = parseInt(seconds % 3600 / 60);
+				_ss = seconds % 3600 % 60; 
+				_tt = _hh +' {$lev_lang[h]} '+ _mm +' {$lev_lang[i]} '+ _ss +' {$lev_lang[s]}';
+				break;
+			case 3 :
+				_mm = parseInt(seconds / 60);
+				_ss = seconds % 60 % 60; 
+				_tt = _mm +' {$lev_lang[i]} '+ _ss +' {$lev_lang[s]}';
+				break;
+			case 4 :
+				_mm = parseInt(seconds / 60);
+				_ss = seconds % 60 % 60; 
+				_tt = _mm +' : '+ _ss;
+				break;
+			default:
+				_hh = parseInt(seconds / 3600);
+				_mm = parseInt(seconds % 3600 / 60);
+				_ss = seconds % 3600 % 60; 
+				_tt = _hh +' : '+ _mm +' : '+ _ss;
+				break;
+		}
+		_vv = _tt.replace(/\b(\w)\b/g, '0$1');
+		setTimeout(function(){levtimer(seconds, timerid, types, endtips)}, 1000);
+		document.getElementById(timerid).innerHTML = _vv;
+	}
+}
+
+</script>
+
+<script type="text/javascript">
+jQuery('#levawards').html('{$doings[title]}');
+</script>
+
+
+{if $_in_mobile}
+
+{eval include template($PLNAME.':systype_'.$doings[systype].'_mobile');}
+
+{else}
+
+{eval include template($PLNAME.':systype_'.$doings[systype]);}
+
+{/if}
+
+<script>
+var isawardtips = new Array();
+var noawardtips = new Array();
+{$isawardtips}
+{$noawardtips}
+</script>
+
+<script>
+levmarquee('award_all_descs', 300, 1, 1, 3000);
+</script>
+
+{eval echo lev_module::ismodule2('task', 'awardjs');}
+
+
+{eval echo lev_module::ismodule2('timer', '_js', $doingid);}
+		
+
+
+
+
+
+
+

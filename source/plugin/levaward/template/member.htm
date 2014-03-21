@@ -1,0 +1,111 @@
+{subtemplate common/header} 
+{eval include template($PLNAME.':js');}
+
+<style>
+.rfm {width:auto;}
+.rfm table.doingsinfos td {padding: 2px;}
+</style>
+
+<div class="ct2_a wp cl" id="ct">
+<div class="mn">
+<div class="bm bw0">
+
+<div id="{$PLNAME}_member">
+
+<form enctype="multipart/form-data" method="post" action="" id="myform" name="myform">
+
+{eval include template($PLNAME.':member_'.$m);}
+
+</form>
+
+<script type="text/javascript">
+
+function initdoing(obj, id) {
+	jQuery.get('{$remote}_initdoing.'+ id, {}, function(data) {
+		if (parseInt(data) >=0) {
+			art.dialog.tips('{$lev_lang[succeed]}'+ data);
+			if (parseInt(data) =="1") {
+				jQuery(obj).html('<font color=green>{$lev_lang[normalmod]}</font>');
+			}else{
+				jQuery(obj).html('{$lev_lang[setmod]}');
+			}
+		}else {
+			art.dialog.tips('{$lev_lang[error]}'+ data, 20);
+		}
+	});
+}
+
+function deldoings(obj, id, db) {
+	if (id >0 && confirm('$lev_lang[confirm]')) {
+		jQuery.get('{$remote}_deldoings.'+ id + '&ajax&'+ Math.random(), {db:db}, function(data){
+			data = parseInt(data);
+			if (data >0) {
+				art.dialog.tips('{$lev_lang[succeed]}');
+				jQuery('#rfm_'+ id).fadeOut('slow');
+			}else {
+				art.dialog.tips(data);
+			}
+		});
+	}
+}
+
+function setmytid(id, tid) {
+	if (tid >0) {
+		jQuery.get('{$remote}_setmytid.'+ id +'.'+ tid + '&ajax&'+ Math.random(), {}, function(data){
+			data = parseInt(data);
+			if (data >0) {
+				art.dialog.tips('{$lev_lang[succeed]}');
+			}else {
+				art.dialog.tips('{$lev_lang[error]}{$lev_lang[noact]}');
+			}
+		});
+	}
+}
+
+function myawardlog(doingid, type, page) {
+	art.dialog({id:'myawardlog'}).close();
+	art.dialog({id:'loadingtips', content:'{$lev_lang[loading]}', title:false, fixed:true});
+	jQuery.get('{$remote}_awardlog.'+ doingid, {page:page, type:type, _t:Math.random()}, function(data){
+		art.dialog({id:'loadingtips'}).close();
+		art.dialog({id:'myawardlog', title:'{$lev_lang[awardl6]}', content:data, fixed:true, cancel:true});
+	});
+}
+
+</script>
+
+</div>
+
+
+
+
+</div></div>
+<div class="appl"><div class="tbn">
+<h2 class="mt bbda">{$lev_lang[mcenter]}</h2>
+<ul>
+<li><a href="{$PLURL}:{$PLNAME}&m=1"><b class="rq">{$lev_lang[m01]}</b></a></li>
+<li id="left_nav_0"><a href="{$PLURL}:member&m=0">{$lev_lang[m02]}</a></li>
+<li id="left_nav_4"><a href="{$PLURL}:member&m=4">{$lev_lang[m03]}</a></li>
+<li id="left_nav_5"><a href="{$PLURL}:member&m=5">{$lev_lang[m04]}</a></li>
+{if $_G[adminid] ==1}
+<li id="left_nav_6"><a href="{$PLURL}:member&m=6"><b class="rq">{$lev_lang[m06]}</b></a></li>
+{/if}
+</ul>
+<script type="text/javascript">
+jQuery('#left_nav_{$m}').addClass('a');
+</script>
+</div></div></div>
+{subtemplate common/footer}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

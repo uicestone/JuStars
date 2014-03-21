@@ -1,0 +1,129 @@
+
+
+<ul id="pro_nav" class="tb cl">
+<li id="top_nav_0"><a href="{$PLURL}:member&m={$m}&t=0">{$lev_lang[myadd]}</a></li>
+<li id="top_nav_1"><a href="{$PLURL}:member&m={$m}&t=1">{$lev_lang[myadd1]}</a></li>
+<li id="top_nav_2"><a href="{$PLURL}:member&m={$m}&t=2">{$lev_lang[myadd2]}</a></li>
+<li id="top_nav_3"><a href="{$PLURL}:member&m={$m}&t=3">{$lev_lang[myadd3]}</a></li>
+</ul>
+<script type="text/javascript">
+jQuery('#top_nav_{$t}').addClass('a');
+</script>
+
+<div class="rfm">
+<table width="100%">
+<tr>
+<td>
+{if $lists[lists]}
+<input type="text" class="px" value="{$srhkey}" id="srhkey" onfocus="this.value=''"/>
+<input type="button" class="pn pnc" value=" {$lev_lang[srh]} " onclick="srhdoing()"/>
+{/if}
+</td>
+</tr>
+</table>
+<script>
+function srhdoing() {
+	val = jQuery.trim(jQuery('#srhkey').val());
+	if (val !='{$srhkey}') {
+		window.location = '{$PLURL}:member&srhkey='+ val;
+	}else {
+		art.dialog.tips('{$lev_lang[srhtips]}');
+	}
+}
+</script>
+</div>
+
+{if $t}
+
+{eval include template($PLNAME.':member_'.$m.'_'.$t);}
+
+{else}
+
+<div class="rfm">
+<table width="100%">
+<tr>
+<td width="15"></td>
+<td width="70">{$lev_lang[myadd4]}</td>
+<td width="120">{$lev_lang[myadd5]}</td>
+<td width="60">{$lev_lang[myadd6]}</td>
+<td width="120">{$lev_lang[myadd7]}</td>
+<td width="120">{$lev_lang[myadd8]}</td>
+<td>{$lev_lang[myadd9]}</td>
+<td width="120" align="right">{$lev_lang[manageo]}</td>
+</tr>
+</table>
+</div>
+{loop $lists[lists] $r}
+<div class="rfm" id="rfm_{$r[id]}">
+<table width="100%">
+<tbody>
+<tr>
+<td width="15" style="vertical-align:middle;">
+{if $r[status] ==1}<font color=red>{$lev_lang[wck]}</font>{else}<font color=green>{$lev_lang[pass]}</font>{/if}</td>
+<td width="70"><a href="{$PLURL}:award&doingid={$r[id]}">
+<img src="{$uploadurl}{$r[thumb]}" width="70" height="70"/></a></td>
+<td width="120" style="padding:4px 2px;">
+{$_systype[$r[systype]]}<br>
+<a href="{if $r[url]}{$r[url]}
+		{elseif $r[tid]}forum.php?mod=viewthread&tid={$r[tid]}
+		{else}{$PLURL}:award&doingid={$r[id]}{/if}">{$r[title]}</a>
+</td>
+<td width="60">
+<a href="{$PLURL}:{$PLNAME}&m=1&edtid={$r[id]}&setup=3#setup3" target="_blank">{$lev_lang[myadd10]}</a><br>
+<a href="{$PLURL}:member&m=4&awardid={$r[id]}">{$lev_lang[myadd11]}</a><br>
+<a href="plugin.php?id=levaward:member&m=5&t=1&doingid={$r[id]}">{$lev_lang[myadd12]}</a></td>
+<td width="120"><select id='settid_{$r[id]}' onchange='setmytid($r[id], this.value)' style='width:120px;'>
+		{if $r[tid]}<option value="{$r[tid]}">{$r[subject]}</option>{else}<option>{$lev_lang[sltsub]}</option>{/if}
+		{$mytid}</select><br>
+		{if $r[endtime] && $r[endtime] < TIMESTAMP}
+			<span style="color:#999">{$lev_lang[awardl9]}</span>
+		{elseif $r[starttime] >TIMESTAMP} 
+			<span style="color:green">{$lev_lang[doing1]} <b style="color: #f60; font-size: 16px;"
+			>{eval echo intval(($r[starttime]-TIMESTAMP)/3600/24)}</b> {$lev_lang[doing2]}
+			</span>
+		{else}
+			<span style="color:green">
+			{if $r[endtime]}{$lev_lang[doing1]} <b
+				style="color: #CC0000; font-size: 16px;">{eval echo intval(($r[endtime]-TIMESTAMP)/3600/24)}</b> {$lev_lang[doing3]}
+			{else}
+				{$lev_lang[cdoing]}
+			{/if}
+			</span>
+		{/if}</td>
+		<td width="120">{if !in_array($r[systype], array(7, 9))}{$lev_lang[myadd13]}<b style="color:#CC0000">{$r[freenum]}</b> {$lev_lang[ci]}
+		<br>{if $r[regscore]}{$lev_lang[myadd14]} <b style="color:#CC0000">{$r[regscore]}</b> {$lev_lang[extscore]}
+			{else}<font color=#666>{$lev_lang[myadd15]}</font>{/if}
+		<br>{if $r[maxjoinnum]}{$lev_lang[myadd16]} <b style="color:#CC0000">{$r[maxjoinnum]}</b
+		> {$lev_lang[ci]}{else}{$lev_lang[myadd17]}{/if}
+		{/if}</td>
+		<td><a href="{$PLURL}:member&m=5&doingid={$r[id]}">{$r[joinnum]} {$lev_lang[myadd18]}</a><br>
+		{$r[thinknum]} {$lev_lang[doing13]}<br>
+		{$r[topnum]} {$lev_lang[doing14]}</td>
+<td width="120" align="right">
+	<a href="{$PLURL}:{$PLNAME}&m=1&edtid={$r['id']}">{$lev_lang[edit]}</a> | 
+	<a href="javascript:;" onclick="deldoings(this, '{$r[id]}')">{$lev_lang[del]}</a><br>
+	<a href="javascript:;" onclick="myjsv('{$r[id]}')">{$lev_lang[jsv]}</a><br>
+	<a href="javascript:;" onclick="initdoing(this, '{$r[id]}')"
+	>{if !$r[isrun]}{$lev_lang[setmod]}{else}<font color=green>{$lev_lang[normalmod]}</font>{/if}</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+{/loop}
+{/if}
+
+
+<script>
+function myjsv(doingid) {
+	var data = '<textarea style="width:400px;height:60px;">'+
+			   '<script src="{$_G[siteurl]}{$lm}__web_view&gotoid=levaward&doingid='+ doingid +'"><\/script></textarea>';
+	art.dialog({id:doingid, content:data, ok:true});
+}
+</script>
+
+
+
+
+
+
+

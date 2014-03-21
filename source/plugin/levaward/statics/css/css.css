@@ -1,0 +1,347 @@
+
+/**********common**********/
+/*去除A标签点击后的虚线框 begin*/
+a {
+	outline: none;
+}
+
+a:active {
+	star: expression(this.onFocus = this.blur () );
+}
+
+:focus {
+	outline: 0;
+}
+
+/*end*/ /*透明背景*/
+.lev_opcty {
+	filter: alpha(opacity = 80);
+	-moz-opacity: 0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+}
+/*end*/
+.lev_ie6fixed {
+	position: fixed;
+	_position: absolute;
+	_top: expression(eval(document.documentElement.scrollTop +  
+		document.documentElement.scrollTop *   0) );
+}
+pre p.pre {
+	height: auto;
+	overflow: hidden;
+	text-align: justify;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+#imghor .sa a {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	border: 2px solid #FFF;
+	text-align:center;
+	margin:2px;
+}
+#imghor .sa a img {border:1px solid #ddd;width:65px;height:65px;}
+#imghor .sa a:hover {border: 2px solid #006A92;}
+#imghor .sa a.simg {border: 2px solid #006A92;}
+#imghor .sa a.simg em {
+	display: block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	right: -1px;
+	bottom: -1px;
+	overflow: hidden;
+	background: url(../img/temper_120718.gif) no-repeat;
+}
+
+/**********common**********/
+
+.levaward {float:left;width:960px;}
+.levaward .aleft{float:left;width:550px;min-height:555px;padding-top:10px;}
+.levaward .aright{float:left;margin-left:28px;width:380px;margin-top:12px;border: 1px solid #F1F1F1;}
+.levaward .aright th {text-align:center;}
+.levaward .aright td {text-align:center;border-top: 1px solid #F1F1F1;}
+.levaward .aright .mycount {color:red;}
+.levaward .aright .px {text-align:center;}
+.levaward .yingxiong {
+    font-size: 18px;
+    height:30px;
+    background:url("../images/repeat.png") repeat-x 0 -40px;
+   }
+   
+.levaward .actv {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+    background:url("../images/repeat.png") repeat-x;
+}
+
+.levaward .aright .awardnum th {
+	height:30px;
+}
+.levaward .aright .thtitle th {
+	color:#666
+}
+
+td.awardtime {color:#777}
+
+.levaext {margin-top: 10px;}
+.levaext .actv {padding-left: 10px;text-align:left;}
+
+#levaward {
+	width: 960px;
+	overflow: hidden;
+	margin: auto;
+	padding-bottom: 5px;
+}
+
+#levaward .px {
+	background: url("../img/px.png") repeat-x #FFFFFF;
+	border-color: #848484 #E0E0E0 #E0E0E0 #848484;
+	border-image: none;
+	border-style: solid;
+	border-width: 1px;
+	height: 15px;
+	padding: 3px 4px;
+	width: 260px
+}
+
+#levaward .px:focus {
+	border-color: #369;
+}
+
+#levaward .levaward_title {
+	background: #E8EAED;
+	color: #1E547F;
+	font-size: 16px;
+	padding: 4px 15px;
+}
+
+#levaward .tbmstips p {
+	background: url("../img/notice.gif") no-repeat 10px center;
+	border: 1px dashed #FF9A9A;
+	padding: 10px 10px 10px 30px;
+}
+
+#levaward .levaward_thcss td {
+	text-align: left;
+	padding: 5px;
+}
+
+#levaward .levaward_thcss th {
+	width: 100px;
+	text-align: right;
+}
+
+#levaward .levaward_http {
+	background: url(../img/http.jpg) no-repeat;
+	padding-left: 58px;
+	width: 206px;
+}
+
+#levaward .levaward_submit {
+	background: none repeat scroll 0 0 #77A0D1;
+	border: 1px solid #88B3E6;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 8px;
+	width: 100%;
+	margin-top: 1px;
+}
+
+#levaward .levaward_textarea {
+	width: 300px;
+	height: 380px;
+	border: none;
+}
+
+#levaward .levaward_rt td {
+	padding: 4px 10px;
+}
+
+#levaward .levaward_rt .levaward_rt_title {
+	text-align: left;
+	font-size: 14px;
+	background: url(../img/hd2.jpg);
+	color: #fff;
+	line-height: 27px;
+}
+
+#levaward .systype_9 {
+	display: none;
+}
+
+a.navtype_r p {
+	padding: 4px 2px;
+	width: 104px;
+	cursor: pointer;
+	font-size: 13px;
+	height: 18px;
+	overflow: hidden;
+	color: #444;
+}
+
+a.navtype_r:hover p,a.navtype_r p.hor {
+	background: #CC0000;
+	color: #fff;
+}
+
+a.navtype_r:hover {
+	text-decoration: none;
+}
+
+.tg_list .item .hd {
+	max-width: 600px;
+	_width: 600px;
+}
+
+.doing-status {
+	background: #CAEED8;
+	font-size: 12px;
+	font-weight: normal;
+	height: 22px;
+	line-height: 22px;
+	padding: 0 10px;
+	position: absolute;
+	top: 15px;
+}
+
+.doing-over {
+	background: #FEECC9;
+}
+
+.tg_list .item .m_1.mmm_1 {
+	background-position: 0 -243px;
+}
+
+.tg_list .item .m_1.mmm_2 {
+	background-position: -127px -243px;
+}
+
+a.joined {
+	border: 1px solid #FFB96D;
+	color: #E48218;
+	display: inline-block;
+	font-family: '宋体';
+	font-size: 12px;
+	padding: 3px 10px 0px;
+	text-decoration: none;
+	background: url(../img/bt_1.png) no-repeat 0 -273px;
+	vertical-align: bottom;
+}
+
+a.joined.hor {
+	background: #000;
+	color: #fff;
+}
+
+a.joined:hover {
+	background: #000;
+	color: #fff;
+}
+
+.levaward_setup .setup_nav {
+    background-image: url("../img/setup.png");
+    background-repeat: no-repeat;
+    height: 40px;
+    margin: 15px 0;
+    width: 880px;
+}
+.levaward_setup.tab1 .setup_nav {
+    background-position: 0 0;
+}
+.levaward_setup.tab2 .setup_nav {
+    background-position: 0 -40px;
+}
+.levaward_setup.tab3 .setup_nav {
+    background-position: 0 -80px;
+}
+.levaward_setup.tab4 .setup_nav {
+    background-position: 0 -120px;
+}
+#levaward_member .rfm table.tles td {
+    background-color: #E8F2FF;
+    border-top: 1px solid #D4E7FF;
+    height: 24px;
+    padding: 0 5px;
+}
+
+.levchkall {margin:0;}
+
+.award_tips {
+	width:339px;
+	height:184px;
+	background:url(../img/btna.png);
+	position: relative;    
+	font-family: '微软雅黑';
+    font-size: 16px;
+    padding: 0 10px;
+    text-align: center;
+    font-weight: bold;
+}
+.award_tips .awardtips_content {
+	height: 120px;
+	overflow:hidden;
+}
+.award_tips .awardtips_content p {
+	text-align: center; 
+	color: rgb(204, 0, 0); 
+	font-size: 22px; 
+	padding: 25px 0px 0px;
+}
+.award_tips .awardtips_content a {
+	display: block;
+    text-align: center;
+    font-weight: normal;
+    font-size: 12px;
+    font-family: '宋体';
+	padding:0 5px;
+}
+.award_tips .awardtips_content span {
+	padding: 1px 0 3px;
+    display: block;
+}
+.award_tips .awardtips_btn {
+    width: 100px;
+	height: 40px;
+    position: absolute;
+    left: 130px;
+    top: 122px;
+    cursor:pointer;
+	display: block;
+}
+
+div.rfm a.tka_a {color:#cc0000;font-weight:bold;}
+
+
+a.msgpm {
+	padding:4px 24px;
+	background:url('../img/msg.png') no-repeat;
+}
+a.msgpm:hover {
+	background:url('../img/msghor.png') no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

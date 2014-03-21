@@ -1,0 +1,25 @@
+
+
+{loop $lists[lists] $r}
+<tr style="cursor:pointer">
+<td width="20"><input type="checkbox" name="awards[]" id="awards_{$r[id]}" 
+value="{$r[id]}" {if $_awards && in_array($r[id], $_awards)}checked{/if}/></td>
+<td><label for="awards_{$r[id]}" width="100%"><img src="{$r[awardimg]}" height="35"/></label></td>
+<td>
+<label for="awards_{$r[id]}" width="100%">{$r[title]}</label></td>
+<td>
+<label for="awards_{$r[id]}" width="100%">{$r[ratios]}%</label></td>
+<td>
+<label for="awards_{$r[id]}" width="100%">
+{if !$r[awardtotal]}{$lev_lang[wuxian]}{else}{eval echo $r[awardtotal]-$r[totals]}{/if}</label></td>
+</tr>
+{/loop}
+{if $lists[pages]}
+<tr class="pages_awards"><td colspan="5" style="text-align: center;">
+<a href="javascript:;" style="color:blue" 
+onclick="award_next('{eval echo $edtid ? ($_GET[page]+1) : max($_GET[page], 1)+1}', '{$edtid}')">{$lev_lang[pagen]}</a></td></tr>
+{/if}
+
+
+
+

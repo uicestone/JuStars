@@ -1,0 +1,61 @@
+
+<div class="rfm">
+<table width="100%">
+<tr>
+<td width="15"></td>
+<td width="70">{$lev_lang[myadd4]}</td>
+<td width="120">{$lev_lang[myadd5]}</td>
+<td width="80">{$lev_lang[m55]}</td>
+<td width="120">{$lev_lang[myadd8]}</td>
+<td>{$lev_lang[myadd9]}</td>
+<td width="120" align="right">{$lev_lang[manageo]}</td>
+</tr>
+</table>
+</div>
+{loop $lists[lists] $r}
+<div class="rfm">
+<table width="100%">
+<tbody>
+<tr>
+<td width="15" style="vertical-align:middle;">
+{if $r[status] ==1}<font color=red>{$lev_lang[wck]}</font>{else}<font color=green>{$lev_lang[pass]}</font>{/if}</td>
+<td width="70"><a href="{$PLURL}:award&doingid={$r[id]}">
+<img src="{$uploadurl}{$r[thumb]}" width="70" height="70"/></a></td>
+<td width="120" style="padding:4px 2px;">
+{$_systype[$r[systype]]}<br>
+<a href="{if $r[url]}{$r[url]}
+		{elseif $r[tid]}forum.php?mod=viewthread&tid={$r[tid]}
+		{else}{$PLURL}:award&doingid={$r[id]}{/if}">{$r[title]}</a>
+</td>
+<td width="80">{$r[bawardnum]}<br>
+		{if $r[endtime] && $r[endtime] < TIMESTAMP}
+			<span style="color:#999">{$lev_lang[awardl9]}</span>
+		{elseif $r[starttime] >TIMESTAMP} 
+			<span style="color:green">{$lev_lang[doing1]} <b style="color: #f60; font-size: 16px;"
+			>{eval echo intval(($r[starttime]-TIMESTAMP)/3600/24)}</b> {$lev_lang[doing2]}
+			</span>
+		{else}
+			<span style="color:green">
+			{if $r[endtime]}{$lev_lang[doing1]} <b
+				style="color: #CC0000; font-size: 16px;">{eval echo intval(($r[endtime]-TIMESTAMP)/3600/24)}</b> {$lev_lang[doing3]}
+			{else}
+				{$lev_lang[cdoing]}
+			{/if}
+			</span>
+		{/if}</td>
+		<td width="120">{$lev_lang[myadd13]}<b style="color:#CC0000">{$r[freenum]}</b> {$lev_lang[ci]}
+		<br>{if $r[regscore]}{$lev_lang[myadd14]} <b style="color:#CC0000">{$r[regscore]}</b> {$lev_lang[extscore]}
+			{else}<font color=#666>{$lev_lang[myadd15]}</font>{/if}
+		<br>{if $r[maxjoinnum]}{$lev_lang[myadd16]} <b style="color:#CC0000">{$r[maxjoinnum]}</b
+		> {$lev_lang[ci]}{else}{$lev_lang[myadd17]}{/if}</td>
+		<td>{$r[joinnum]} {$lev_lang[myadd18]}<br>
+		{$r[thinknum]} {$lev_lang[doing13]}<br>
+		{$r[topnum]} {$lev_lang[doing14]}</td>
+<td align="right">
+<a href="javascript:;" onclick="myawardlog('{$r[id]}', 1)">{$lev_lang[sy2]}</a><br>
+<a href="javascript:;" onclick="myawardlog('{$r[id]}')">{$lev_lang[sy3]}</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+{/loop}

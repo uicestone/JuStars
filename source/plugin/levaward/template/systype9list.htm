@@ -1,0 +1,110 @@
+
+
+{eval $cbctime = $sct = 0;$doingid = $doings[id]}
+<div class="detail-status floatleft">
+<div class="main-box 
+{if !$doings[maxnum]}
+	soldout
+{elseif $doings[starttime] >TIMESTAMP}
+{eval $cbctime = $doings[starttime] - TIMESTAMP;$sct = 1;}
+	notbegin
+{elseif $doings[endtime] && $doings[endtime] <TIMESTAMP}
+	timeout
+{else}
+{eval $cbctime = $doings[endtime] - TIMESTAMP}
+	avil
+{/if}">
+{if !$_isr}
+<div class="name-box"><!--<span class="benefit floatleft"></span>-->
+<h2 class="name">{$doings[title]}</h2>
+</div>
+{/if}
+<div class="description">{$doings[descs]}</div>
+<div class="status-banner J_juBuyBtns "><span
+	class="currentPrice floatleft"> <small>&yen;</small>{$doings[teamprice]}</span>
+
+<div class="floatleft">
+<div class="discount">{eval echo sprintf('%0.1f', $doings[teamprice]/$doings[price]*10);}<small>{$lev_lang[zhek]}</small></div>
+<del class="originPrice">&yen;{$doings[price]}</del></div>
+
+<input type="button" value=" " class="buyaction J_BuySubmit" 
+	{if $cbctime && !$sct}
+	onclick="teambuy('{$doings[id]}', '{$doings[title]}', '{$doings[teamprice]}')"{/if}></div>
+
+<div class="time-banner">
+<p class="tit"></p>
+
+<div class="ju-spltimer J_juItemTimer">{if $cbctime && $cbctime<0}{$lev_lang[cdoing]}{else}{$lev_lang[hsh]}{$lev_lang[mh]}
+<b id="timers_{$doingid}"><script>levtimer('{$cbctime}', 'timers_{$doingid}', 1);</script></b>{/if}</div>
+</div>
+
+<div class="numOfPeople J_ItemSold" style="height: 62px; line-height: 62px;">
+{$lev_lang[sellall]}<span class="num"> {$doings[opnum]}</span>{$lev_lang[jian]}, {$lev_lang[kcnum]} 
+<span class="num">{if $doings[maxnum]=='-1'}{$lev_lang[isfull]}{else}{$doings[maxnum]}{/if}</span>{$lev_lang[jian]}</div>
+</div>
+
+</div>
+
+{if $_isr ==1 || !$_isr}
+<script>
+
+function teambuy(doingid, title, price) {
+	if (!loginwin()) return false;
+	var contents = '<div class="rfm" style="width:200px;"><table>'+
+				   '<tr><th>{$lev_lang[buynum]}{$lev_lang[mh]}</th>'+
+				   '<td><input type="text" class="px" id="goodsnum'+ doingid +'" style="width:100px"'+
+				   ' value="1" onchange="countp(this, \''+ price +'\')"></td></tr>'+
+				   '<tr><th>{$lev_lang[payall]}{$lev_lang[mh]}</th>'+
+				   '<td><b id="goodsnumprice" style="color:#CC0000;font-size:16px;">'+ price +'</b> {$lev_lang[extscore2]}</td></tr>'+
+				   '</div>';
+	art.dialog({id:"teambuy", title:title, content:contents, ok:function(){
+		var goodsnum = jQuery('#goodsnum'+ doingid).val();
+		if (!confirm('{$lev_lang[confirm]}{$lev_lang[extscore2]} -'+ (price * goodsnum))) return false;
+		jQuery.get('{$lm}_teambuy._teambuy.'+ doingid, {gnum:goodsnum, _:Math.random()}, function(data){
+			var r = parseInt(data);
+			if (r =="1") {
+				art.dialog.tips('{$lev_lang[succeed]}');
+			}else {
+				switch(r) {
+					case -87 :
+						art.dialog.tips('{$lev_lang[error]}{$lev_lang[sellnos]}');
+						break;
+					case -7 :
+						art.dialog.tips('{$lev_lang[error]}{$lev_lang[selfgoods]}');
+						break;
+					case -1 :
+						art.dialog.tips('{$lev_lang[error]}{$lev_lang[rinum]}');
+						break;
+					case -3 :
+						art.dialog.tips('{$lev_lang[error]}<a href="{$_PLG[buyscoreurl]}" style="color:blue">{$lev_lang[noscore]}</a>', 20);
+						break;
+					default:
+						art.dialog.tips('{$lev_lang[error]}'+ data);
+						break;
+				}
+			}
+		});
+	}, cancel:true});
+}
+
+function countp(obj, price) {
+	var goodsnum = parseInt(obj.value);
+	if (isNaN(goodsnum) || goodsnum <=0) {
+		art.dialog.tips('{$lev_lang[rinum]}');
+		return false;
+	}
+	price = parseInt(price) * goodsnum;
+	jQuery('#goodsnumprice').html(price);
+}
+
+var _uid = parseInt('{$_G[uid]}');
+function loginwin(data) {
+	if (parseInt(data) =="-5" || isNaN(_uid) || _uid <=0) {
+		showWindow('login', 'member.php?mod=logging&action=login&referer='+ encodeURIComponent(window.location));
+	}else {
+		return true;
+	}
+}
+
+</script>
+{/if}

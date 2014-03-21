@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[hux_zp.plugin]]></item>
+	<item id="RevisionID"><![CDATA[27839]]></item>
+	<item id="SN"><![CDATA[2014030714bl11ywUu1u]]></item>
+	<item id="RevisionDateline"><![CDATA[1386057601]]></item>
+	<item id="Data">
+		<item id="/data.inc.php"><![CDATA[7ee36d50245ce240e43c310600ed95bb]]></item>
+		<item id="/discuz_plugin_hux_zp_SC_GBK.xml"><![CDATA[c1a6f3360372135810086cfb4d1e8e0e]]></item>
+		<item id="/discuz_plugin_hux_zp_SC_UTF8.xml"><![CDATA[260cf998c24d8a2a56ff430a3d9243c4]]></item>
+		<item id="/discuz_plugin_hux_zp_TC_BIG5.xml"><![CDATA[22049138103bce760cee8855133532d6]]></item>
+		<item id="/discuz_plugin_hux_zp_TC_UTF8.xml"><![CDATA[36b7bba4b997f71fab4188466dfa0da3]]></item>
+		<item id="/hux.inc.php"><![CDATA[1ed12d82108ea69381a650f7f33ddf44]]></item>
+		<item id="/hux_zp.fun.php"><![CDATA[691892af0733767f58c9237e5c7b4075]]></item>
+		<item id="/hux_zp.inc.php"><![CDATA[458bd23449f92e554afc7fc234e04a0c]]></item>
+		<item id="/images/bg.jpg"><![CDATA[b0660d950d51811d6139f80c5dfa0d00]]></item>
+		<item id="/images/disk.png"><![CDATA[0512377a701f27a3cfd64dd04f805ea2]]></item>
+		<item id="/images/index.htm"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/images/jp.jpg"><![CDATA[1bf468f8b2408f8f5e497f0507d01e36]]></item>
+		<item id="/images/start.png"><![CDATA[27010c0522883f5d9377e3ee2e839f1a]]></item>
+		<item id="/images/start1.png"><![CDATA[ad9b04871d1da216e947801f8f3b5c29]]></item>
+		<item id="/images/style.css"><![CDATA[cc2abd2f1f86545e04df783361fd4123]]></item>
+		<item id="/images/zjbg.jpg"><![CDATA[5e4c8ba252c398df53e125997aa3891b]]></item>
+		<item id="/index.htm"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/install.php"><![CDATA[2853f6b4c447b9d5b6e4d14798945362]]></item>
+		<item id="/table/index.htm"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/table/table_hux_common_member.php"><![CDATA[159a98ffa15673647d8a9227d4049260]]></item>
+		<item id="/table/table_hux_zp.php"><![CDATA[8bc75b437b402ab427d1e3d02642abe7]]></item>
+		<item id="/table/table_hux_zp_user.php"><![CDATA[29aeee39167741bf6b13691c4b4faeda]]></item>
+		<item id="/table/table_hux_zp_userjp.php"><![CDATA[69442cea0d0c6c8310931bc20f8e3429]]></item>
+		<item id="/template/index.htm"><![CDATA[2e825c205e1734b5ff71f4cbf462cdce]]></item>
+		<item id="/uninstall.php"><![CDATA[a6b8e8cb27a10ea221f4806ef20647c6]]></item>
+	</item>
+</root>

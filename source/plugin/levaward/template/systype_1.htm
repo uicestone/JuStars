@@ -1,0 +1,236 @@
+
+<style>
+.lev-lottery-levaward {
+	height: 557px;
+	overflow: hidden;
+	position: relative;
+	width: 560px;
+	background: url("{$PLSTATIC}img/levaward.png") no-repeat;
+}
+.lev-lottery-levaward a {
+	display:block;
+	position: absolute;
+	width:100px;height:100px;
+	text-align:center;
+}
+.lev-lottery-levaward a img {
+	max-width:100px;max-height:100px;
+	_width:100px;_height:100px;
+}
+.lev-lottery-scene-levaward {
+    width: 260px;
+	height: 260px;
+    position: absolute;
+    left: 146px;
+    top: 149px;
+}
+.lev-lottery-scene-levaward-3 {
+	height: 156px;
+	position: absolute;
+	width: 156px;
+	left: 197px;
+    top: 202px;
+}
+.lev-lottery-scene-levaward-4 {
+	height: 156px;
+	position: absolute;
+	width: 156px;
+	left: 218px;
+    top: 210px;
+    z-index:10;
+    cursor:pointer;
+}
+.lev-lottery-point-bg1 {
+	position: absolute;
+	width:22px;height:22px;
+}
+.lev-lottery-point-bg2 {
+	position: absolute;
+	width:20px;height:20px;
+}
+#lev-lottery-point-1 {left:99px; top:90px;}
+#lev-lottery-point-2 {left:175px; top:41px}
+#lev-lottery-point-3 {top: 22px; left: 270px;}
+#lev-lottery-point-4 {top: 44px; left: 371px;}
+#lev-lottery-point-5 {top: 96px; left: 442px;}
+#lev-lottery-point-6 {top: 165px; left: 490px;}
+#lev-lottery-point-7 {left: 510px; top: 262px;}
+#lev-lottery-point-8 {left: 490px; top: 366px;}
+#lev-lottery-point-9 {top: 438px; left: 438px;}
+#lev-lottery-point-10 {top: 490px; left: 358px;}
+#lev-lottery-point-11 {top: 506px; left: 257px;}
+#lev-lottery-point-12 {top: 483px; left: 164px;}
+#lev-lottery-point-13 {left: 93px; top: 431px;}
+#lev-lottery-point-14 {top: 366px; left: 46px;}
+#lev-lottery-point-15 {left: 25px; top: 258px;}
+#lev-lottery-point-16 {top: 165px; left: 46px;}
+
+.lev-lottery-award-1 {
+	top: 57px; left: 231px;
+}
+.lev-lottery-award-2 {
+	top: 115px; left: 340px;
+}
+.lev-lottery-award-3 {
+	left: 392px; top: 225px;
+}
+.lev-lottery-award-4 {
+	left: 340px; top: 340px;
+}
+.lev-lottery-award-5 {
+	left: 225px; top: 390px;
+}
+.lev-lottery-award-6 {
+	left: 110px; top: 338px;
+}
+.lev-lottery-award-7 {
+	left: 65px; top: 226px;
+}
+.lev-lottery-award-8 {
+	top: 110px; left: 120px;
+}
+
+.lev_lottery_num_levaward { 
+	color: #fff;
+    left: 220px;
+    position: absolute;
+    top: 305px;
+    width: 116px;
+    overflow: hidden;
+    height: 22px;
+    font-size: 14px;
+    text-align:center;
+}
+</style>
+<table width="100%"><tr><td width="560" valign="top">
+
+<div class="lev-lottery-levaward">
+
+<a id="awardid_0" title="0" rotates="25" awardtype="7" awardnum="0"></a>
+{eval $_rotate = array(380, 2, 45, 90, 135, 180, 227, 272, 318);}
+{loop $awards $r}
+{if !($__num % 8)}{eval $__num = 1;}{else}{eval $__num++;}{/if}
+	<a class="lev-lottery-award-{$__num} awardpicbox" id="awardid_{$r[id]}" title="{$r[title]}" 
+	rotates="{$_rotate[$__num]}" awardtype="{$r[awardtype]}" awardnum="{$r[awardnum]}">
+	<span><img alt="{$r[title]}" src="{$r[awardimg]}"></span></a>
+{/loop}
+
+<div class="lev-lottery-scene-levaward"><img src="{$PLSTATIC}img/1.png" id="isrotate"></div>
+<div class="lev-lottery-scene-levaward-3"><img src="{$PLSTATIC}img/5.png" id="isrotate3"></div>
+<div class="lev-lottery-scene-levaward-4" id="startbtn"><img src="{$PLSTATIC}img/4.png" id="isrotate4"></div>
+
+<div class="lev_lottery_num_levaward">
+<b>{$lev_lang[lottery1]} <span id="lev_lottery_num">0</span> {$lev_lang[lottery2]}</b></div>
+
+<div id="lev-lottery-point-1" class="lev-lottery-point-bg1"><img src="{$PLSTATIC}img/6.png"></div>
+<div id="lev-lottery-point-2" class="lev-lottery-point-bg2"><img src="{$PLSTATIC}img/7.png"></div>
+<div id="lev-lottery-point-3" class="lev-lottery-point-bg1"><img src="{$PLSTATIC}img/6.png"></div>
+<div id="lev-lottery-point-4" class="lev-lottery-point-bg2"><img src="{$PLSTATIC}img/7.png"></div>
+<div id="lev-lottery-point-5" class="lev-lottery-point-bg1"><img src="{$PLSTATIC}img/6.png"></div>
+<div id="lev-lottery-point-6" class="lev-lottery-point-bg2"><img src="{$PLSTATIC}img/7.png"></div>
+<div id="lev-lottery-point-7" class="lev-lottery-point-bg1"><img src="{$PLSTATIC}img/6.png"></div>
+<div id="lev-lottery-point-8" class="lev-lottery-point-bg2"><img src="{$PLSTATIC}img/7.png"></div>
+<div id="lev-lottery-point-9" class="lev-lottery-point-bg1"><img src="{$PLSTATIC}img/6.png"></div>
+<div id="lev-lottery-point-10" class="lev-lottery-point-bg2"><img src="{$PLSTATIC}img/7.png"></div>
+<div id="lev-lottery-point-11" class="lev-lottery-point-bg1"><img src="{$PLSTATIC}img/6.png"></div>
+<div id="lev-lottery-point-12" class="lev-lottery-point-bg2"><img src="{$PLSTATIC}img/7.png"></div>
+<div id="lev-lottery-point-13" class="lev-lottery-point-bg1"><img src="{$PLSTATIC}img/6.png"></div>
+<div id="lev-lottery-point-14" class="lev-lottery-point-bg2"><img src="{$PLSTATIC}img/7.png"></div>
+<div id="lev-lottery-point-15" class="lev-lottery-point-bg1"><img src="{$PLSTATIC}img/6.png"></div>
+<div id="lev-lottery-point-16" class="lev-lottery-point-bg2"><img src="{$PLSTATIC}img/7.png"></div>
+</div>
+
+</td>
+<td valign="top">
+
+{eval include template($PLNAME.":systype_right");}
+
+</td>
+</tr></table>
+
+<script type="text/javascript" src="{$PLSTATIC}jquery.masonry.min.js"></script>
+<script type="text/javascript" src="{$PLSTATIC}jQueryRotate.js"></script>
+<script type="text/javascript" src="{$PLSTATIC}jquery.easing.min.js"></script>
+<script type="text/javascript">
+levmarquee('awardlogs{$doingid}', 22, 1, 300, 2000);
+
+jQuery(function(){
+	jQuery("#startbtn").click(function(){
+		levopenaward('rotateaward');
+	});
+});
+
+function rotateaward(r) {
+	//var lev_lottery_num = parseInt(jQuery('#lev_lottery_num').text());
+	//jQuery('#lev_lottery_num').html(lev_lottery_num -1);
+	var rotate_num = parseInt(jQuery('#awardid_'+ r).attr('rotates'));
+	jQuery("#isrotate").rotate({
+		duration: 3000,
+		angle: 0, 
+		animateTo: 360 * 6 + rotate_num,
+		easing: jQuery.easing.easeOutSine,
+		callback: function(){
+			awardtips(r)
+		}
+	});
+}
+
+jQuery('#startbtn').hover(function(){
+	jQuery('#isrotate3').attr('src', '{$PLSTATIC}img/3.png');
+}, function(){
+	jQuery('#isrotate3').attr('src', '{$PLSTATIC}img/5.png');
+});
+
+jQuery('a.awardpicbox').imagesLoaded(function(){
+	jQuery('a.awardpicbox img').each(function() {
+		var _height = jQuery(this).height();
+		if (_height && _height <100) {
+			var _h = parseInt((100 - _height) / 2);
+			jQuery(this).css({'margin-top':_h});
+		}
+	});
+})
+var type = 0;
+window.setInterval('sansuo()', 300);
+function sansuo() {
+	if (type ==1) {
+		type = 0;
+		jQuery('.lev-lottery-point-bg1').show();
+		jQuery('.lev-lottery-point-bg2').hide();
+	}else {
+		type = 1;
+		jQuery('.lev-lottery-point-bg1').hide();
+		jQuery('.lev-lottery-point-bg2').show();
+	}
+} 
+</script>
+
+<!--[if IE 6]>
+	<script type="text/javascript">
+		jQuery("#isrotate").rotate(0);
+		jQuery("#isrotate3").rotate(0);
+		jQuery("#isrotate4").rotate(0);
+		jQuery(".lev-lottery-point-bg1 img").rotate(0);
+		jQuery(".lev-lottery-point-bg2 img").rotate(0);
+		jQuery("a.awardpicbox").rotate(0);
+	</script>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

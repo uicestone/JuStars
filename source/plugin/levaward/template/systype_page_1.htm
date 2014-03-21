@@ -1,0 +1,55 @@
+{subtemplate common/header}
+
+{eval include template($PLNAME.':js');}
+
+<style id="diy_style" type="text/css"></style>
+<link type="text/css" rel="stylesheet" href="{$PLSTATIC}css/levaward.css">
+<style type="text/css">.right-lottery-info{background:#fff9cf;}</style>
+
+<div style="width:100%" class="wp">
+<!--[diy=diy176]--><div id="diy176" class="area"></div><!--[/diy]-->
+</div>
+
+<div class="bg-container" style="position: relative;">
+<div style="position: absolute;width:100%">
+<!--[diy=diy177]--><div id="diy177" class="area">DIY-2</div><!--[/diy]-->
+</div>
+<div class="levaward_page" style=" position: relative; width:960px;margin:auto;">
+
+<div id="islevawardloading" style="position: absolute;top:570px;left:5px;width:910px;">
+{$lev_lang[loading]}
+<script>
+	jQuery.get('{$PLURL}:award&doingid={$doingid}&'+ Math.random(), {hook:1, pg:1}, function(data){
+		jQuery('#islevawardloading').html(data);
+	})
+</script>
+</div>
+
+<div style="position: absolute;top:1260px;left:10px;width:905px;">
+<!--[diy=diy178]--><div id="diy178" class="area">DIY-3</div><!--[/diy]-->
+</div>
+
+</div>
+<!-- ±³¾° S[[-->
+<div class="bg-1"></div>
+<div class="bg-2"></div>
+<div class="bg-3"></div>
+<div class="bg-4"></div>
+<div class="bg-5"></div>
+<!-- ±³¾° E]]-->
+</div>
+
+{subtemplate common/footer}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,184 @@
+{subtemplate common/header} {eval include template($PLNAME.':js');}
+
+<link rel="stylesheet" href="{$PLSTATIC}css/tuangou.css" type="text/css">
+<link rel="stylesheet" href="{$PLSTATIC}css/systype9.css" type="text/css">
+<div class="bg2013">
+<div class="w_950 content">
+
+<div class="tuangou">
+<div class="tg_nav">
+<ul class="clearfix" id="levawards_topnav">
+	<li class="item l_1"><a href="{$PLURL}:{$PLNAME}"></a></li>
+	<li class="item l_2"><a href="{$PLURL}:{$PLNAME}&doingst=1&typeid={$typeid}&uid={$uid}&typeid2={$systype}"></a></li>
+	<li class="item l_3"><a href="{$PLURL}:{$PLNAME}&doingst=2&typeid={$typeid}&uid={$uid}&typeid2={$systype}"></a></li>
+	<li class="item l_4"><a href="{$PLURL}:{$PLNAME}&doingst=3&typeid={$typeid}&uid={$uid}&typeid2={$systype}"></a></li>
+	<li class="item l_5" id="hd_cate"><a href="{$PLURL}:{$PLNAME}&m=1" class="levaward_add"></a>
+	<ul class="sub" id="hd_cate_node">
+		<li><a href="{$PLURL}:{$PLNAME}&m=1">{$lev_lang[senddoing]}</a></li>
+		<li><a href="{$PLURL}:member">{$lev_lang[mdoing]}</a></li>
+	</ul>
+	</li>
+</ul>
+<script>
+jQuery('li.item.l_{eval echo 1+$doingst;} a').addClass('select');
+
+jQuery('#levawards_topnav li.item').hover(
+		function(){
+			jQuery(this).find('a').addClass('select');
+		},
+		function(){
+			selects = jQuery('#levawards_topnav li.item a.select').length;
+			if (selects >=2) jQuery(this).find('a').removeClass('select');
+		}
+);
+
+jQuery('#hd_cate').hover(
+		function(){
+			jQuery('#hd_cate .levaward_add').addClass('select');
+			jQuery('#hd_cate_node').show();
+		},
+		function(){
+			jQuery('#hd_cate .levaward_add').removeClass('select');
+			jQuery('#hd_cate_node').hide();
+		});
+</script>
+</div>
+<div class="tg_list">
+<table width="100%">
+	<tr>
+		<td>{loop $lists[lists] $r}
+		<div class="item clearfix"><table width="100%"><tr><td>
+		<div class="hd yahei">
+			<a href="
+			{if $r[url]}{$r[url]}
+			{elseif $r[tid]}forum.php?mod=viewthread&tid={$r[tid]}
+			{else}{$PLURL}:award&doingid={$r[id]}{/if}">{$r[title]}</a>
+			<span class="lf"></span>
+			<span class="rt"></span>
+			</div></td><td style="padding-right:100px;text-align:right;float:right;">
+		{if $r[endtime] && $r[endtime] < TIMESTAMP}
+			<span class="doing-status doing-over">{$lev_lang[awardl9]}</span>
+		{elseif $r[starttime] >TIMESTAMP} 
+			<span class="doing-status doing-over">{$lev_lang[doing1]} <b style="color: #f60; font-size: 16px;"
+			>{eval echo intval(($r[starttime]-TIMESTAMP)/3600/24)}</b> {$lev_lang[doing2]}
+			</span>
+		{else}
+			<span class="doing-status">
+			{if $r[endtime]}{$lev_lang[doing1]} <b
+				style="color: #CC0000; font-size: 16px;">{eval echo intval(($r[endtime]-TIMESTAMP)/3600/24)}</b> {$lev_lang[doing3]}
+			{else}
+				{$lev_lang[cdoing]}
+			{/if}
+			</span>
+		{/if}
+			</td></tr></table>
+		<div class="left"><a href="{$PLURL}:award&doingid={$r[id]}"><img
+			src="{$uploadurl}{$r[thumb]}" alt="{$r[title]}" height="260"
+			width="280"></a></div>
+		<div class="right">
+{if $r[systype] ==9}
+{eval $doings = $r; $_isr++;}
+{template levaward:systype9list}
+{else}
+		<p style="margin-left: 68px; text-indent: -68px;"><em
+			class="orange">{$lev_lang[doing4]}{$lev_lang[mh]}</em>{$r[descs]}</p>
+		<p><em>{$lev_lang[doing5]}{$lev_lang[mh]}</em> <span class="time">{eval echo date('Y-m-d H:i', $r[starttime])} &raquo; </span> 
+		<span class="time">{if $r[endtime]}{eval echo date('Y-m-d H:i', $r[endtime])}{else}{$lev_lang[cdoing]}{/if}</span></p>
+	{if $r[systype] ==7}
+		<p><em>{$lev_lang[doing6]}{$lev_lang[mh]}</em> <span class="time"
+		>{if $r[baomintime]}{eval echo date('Y-m-d H:i', $r[baomintime])}{/if} 
+		&nbsp;&nbsp;{$lev_lang[doing7]}{$lev_lang[mh]}{$lev_lang['gender'.$r[gender]]}</span></p>
+	{/if}
+	{if $r[address]}
+		<p style="height: 22px; overflow: hidden;"><em>{$lev_lang[doing8]}{$lev_lang[mh]}</em>{if $r[city]}[{$r[city]}]{/if} {$r[address]}</p>
+	{/if}
+		<p><em style="padding-left: 14px;">{$lev_lang[doing9]}{$lev_lang[mh]}</em><a 
+		href="home.php?mod=space&uid={$r[uid]}">{$r[bbsname]}</a> &raquo; <a 
+		href="{$PLURL}:{$PLNAME}&uid={$r[uid]}">{$lev_lang[doing10]}</a></p>
+		<p>
+		{if !$r[endtime] || $r[endtime] > TIMESTAMP}<span id="joineding_{$r[id]}">
+			<a class="menu m_1 mmm_1 joinedsc{$r[id]}" href="{$PLURL}:award&doingid={$r[id]}" >{$lev_lang[doing12]}</a>
+		  </span>
+		{/if}
+		{if $r[tid]}
+			<a class="menu m_1 mmm_2" href="forum.php?mod=viewthread&tid={$r[tid]}"></a>
+		{/if}
+		</p>
+		<p style="font-size: 12px;"><a style="color: #006A92;" href="javascript:;"
+			onclick="xdoing('{$r[id]}', this, 0)">(<span style="color: red">{$r[thinknum]}</span>){$lev_lang[doing13]}</a>
+		&nbsp;&nbsp; <a style="color: #006A92;" href="javascript:;"
+			onclick="xdoing('{$r[id]}', this, 1)">(<span style="color: red">{$r[topnum]}</span>){$lev_lang[doing14]}</a></p>
+{/if}
+		</div>
+		<div class="bao_num" id="join_num_{$r[id]}">{$r[joinnum]}</div>
+	{if $r[maxnum] && $r[systype] ==7}
+		<div style="bottom:8px;height:20px;overflow:hidden;position:absolute;right:12px;text-align:center;width:100px;"
+		>{$lev_lang[doing15]}<font color="red"> {eval echo $r[maxnum] - $r[joinnum]} </font>{$lev_lang[doing16]}</div>
+	{/if}
+		{if $r[endtime] && $r[endtime] < TIMESTAMP}<!--<s class="i_jiesu png_ie6"></s>-->{/if}
+		</div>
+		{/loop} {if $lists[pages]}
+		<div class="item clearfix" style="padding: 10px;">
+		{$lists[pages]}</div>
+		{/if}</td>
+		<td width="110" align="right" valign="top" style="padding-top: 10px">
+
+		<div style="position: relative; padding-top: 1px; float: left;">
+		<div class="">
+		<table width="110" style="background: #F1F1F1; border: 1px solid #ddd">
+			<tr>
+				<td align="center"><a href="{$PLURL}:{$PLNAME}&uid={$uid}&doingst={$doingst}" class="navtype_r hor">
+				<p class="hor">{$lev_lang[doing17]}</p></td>
+			</tr>
+			{loop $_types $k $r}
+			<tr>
+				<td align="left"><a href="{$PLURL}:{$PLNAME}&typeid={$k}&uid={$uid}&doingst={$doingst}"
+					class="navtype_r">
+				<p {if $typeid==$k}class="hor"{/if}>{$r}</p>
+				</a></td>
+			</tr>
+			{/loop}
+			<tr>
+				<td align="center"><a href="{$PLURL}:{$PLNAME}&uid={$uid}&doingst={$doingst}" class="navtype_r">
+				<p class="hor">{$lev_lang[doing18]}</p></td>
+			</tr>
+			{loop $_systype $k $r}
+			<tr>
+				<td align="left"><a href="{$PLURL}:{$PLNAME}&typeid2={$k}&uid={$uid}&doingst={$doingst}" class="navtype_r">
+				<p {if $systype==$k}class="hor"{/if}>{$r}</p>
+				</a></td>
+			</tr>
+			{/loop}
+		</table>
+		</div>
+		</div>
+
+		</td>
+	</tr>
+</table>
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+
+function xdoing(id, obj, type, can) {
+	jQuery.get('{$remote}_xdoing.'+ id +'.'+ type, {can:can}, function(data) {
+		data = parseInt(data);
+		if (data >=0) {
+			if (can) {
+				jQuery('a.joinedsc'+ id).show();
+				jQuery(obj).hide();
+				jQuery('#join_num_'+ id).html(data);
+			}else {
+				jQuery(obj).find('span').html(data);
+			}
+		}
+	});
+}
+
+</script>
+
+{subtemplate common/footer}
