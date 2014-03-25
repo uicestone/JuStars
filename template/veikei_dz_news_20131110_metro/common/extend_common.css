@@ -66,7 +66,7 @@ td, th, div { word-break:break-all; word-wrap:break-word }
 .ie6 #nv li { line-height: 50px; }
 #nv li a { float: left; padding:0 20px; text-align:center; width: auto; height: 50px; display:block; line-height: 50px; color: #fff; font-size:16px; background: none; }
 #nv li span { display: none; }
-#nv li.a { margin-left:0px; }
+#nv li.a { margin-left:0px; background: none; }
 #nv li a:hover { color:#fff; text-decoration:none; background: url({STYLEIMGDIR}/nv_a.gif) repeat-x; }
 #nv li.hover a:hover, #nv li.hover a { color:#fff; background: url({STYLEIMGDIR}/nv_a.gif) repeat-x; }
 #qmenu { margin-top:10px; }
