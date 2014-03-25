@@ -96,7 +96,7 @@ body { background: #FFF; }
 
 #qmenu {color: #FF6E00; }
 #nv li a{ padding: 0 40px; color: #FFF; height: 35px; line-height: 35px; }
-#nv li a:hover { background: none; color: #FFF;}
+#nv li a:hover { background: none; }
 #nv ul{ padding-left: 130px; }
 
 #scbar { background: none; }
