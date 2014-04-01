@@ -225,3 +225,8 @@ a:hover{text-decoration:underline;color:#0082cb}
 .module.cl h2{
 	margin-bottom: 5px;
 }
+
+.img-only .slidebar, .img-only .title {
+	display: none;
+}
+
