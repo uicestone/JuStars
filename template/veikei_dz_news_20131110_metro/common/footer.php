@@ -181,6 +181,23 @@
 		<!--{/if}-->
 	</script>
 <!--{/if}-->
+<script type="text/javascript">
+(function($){
+$(function(){
+	setTimeout(function(){
+		$('.frame-tab>.tab-title>ul.tb>li').mouseenter(function(){
+			var activeTab = $(this).attr('id');
+			$(this).addClass('a');
+			$(this).siblings().removeClass('a');
+			$(this).parent().parent().next('.tb-c').children('#' + activeTab + '_content').show().siblings().hide();
+		})
+		.children('a').click(function(){
+			window.location.href = $(this).attr('href');
+		});
+	},1000);
+});
+})(jQuery)
+</script>
 <!--{eval output();}-->
 </body>
 </html>
