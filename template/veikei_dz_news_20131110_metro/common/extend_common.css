@@ -80,7 +80,6 @@ td, th, div { word-break:break-all; word-wrap:break-word }
 */
 
 /*body { background: ##FFECD7 url({STYLEIMGDIR}/background.jpg); }*/
-body { background: #FFF; }
 .frame { background: none; }
 .frame, .frame-tab { background: none; }
 .frame-tab .tb-c { padding: 10px 7px; }
